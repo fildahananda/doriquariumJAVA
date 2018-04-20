@@ -45,7 +45,6 @@ public class Coin extends MovingObject {
      */
     @Override
     public void move() {
-        System.out.println(getY());
         if (getY() < Aquarium.HEIGHT - 20) moveDirection(STANDARDDISTANCEPERSTEP / 5, (float) (0.5 * Math.PI));
     }
 
