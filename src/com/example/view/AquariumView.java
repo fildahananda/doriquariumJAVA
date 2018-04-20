@@ -37,8 +37,8 @@ public class AquariumView extends JPanel {
             bgImg.add(ImageIO.read(new File("./res/img/far_top.png")));
             bgImg.add(ImageIO.read(new File("./res/img/far_bot.png")));
             bgImg.add(ImageIO.read(new File("./res/img/sand.png")));
-            bgImg.add(ImageIO.read(new File("./res/img/foreground-1.png")));
-            bgImg.add(ImageIO.read(new File("./res/img/foreground-2.png")));
+//            bgImg.add(ImageIO.read(new File("./res/img/foreground-1.png")));
+//            bgImg.add(ImageIO.read(new File("./res/img/foreground-2.png")));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,9 +84,9 @@ public class AquariumView extends JPanel {
             arrayG.get(i).drawImage(imgFish, fishes.get(i).getX(), fishes.get(i).getY(), null);
         }
 
-        for (int i = 0; i < 3; i++) {
-            tempG.drawImage(bgImg.get((i % 2 == 0 ? 4 : 5)), i * 256, 420 - 192, null);
-        }
+//        for (int i = 0; i < 3; i++) {
+//            tempG.drawImage(bgImg.get((i % 2 == 0 ? 4 : 5)), i * 256, 420 - 192, null);
+//        }
     }
 
     public AquariumView(List<Fish> fishes, List<Food> foods, List<Coin> coins) {
