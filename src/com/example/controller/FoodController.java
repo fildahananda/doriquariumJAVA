@@ -74,12 +74,12 @@ public class FoodController implements ISubController {
     /**
      * Adds the new entity.
      */
-    public void addNewEntity() {
-        Random random = new Random();
-        int bound = Aquarium.WIDTH / 10;
-        int randX = bound + random.nextInt(Aquarium.WIDTH - (2 * bound));
-        int y = -5;
-        Food newFood = new Food(randX, y);
+    public void addNewEntity(int xPos, int yPos) {
+//        Random random = new Random();
+//        int bound = Aquarium.WIDTH / 10;
+//        int randX = bound + random.nextInt(Aquarium.WIDTH - (2 * bound));
+//        int y = -5;
+        Food newFood = new Food(xPos, yPos);
         foods.add(newFood);
     }
 }

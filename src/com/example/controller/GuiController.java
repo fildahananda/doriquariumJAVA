@@ -4,6 +4,8 @@ package com.example.controller;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -40,9 +42,6 @@ public class GuiController extends JFrame implements ActionListener {
 
     /** The add fish button. */
     private JButton addFishButton;
-
-    /** The add food button. */
-    private JButton addFoodButton;
 
     /** The sell fish button. */
     private JButton sellFishButton;
@@ -110,12 +109,17 @@ public class GuiController extends JFrame implements ActionListener {
 
         this.gameRuleController = gameRuleController;
         aquariumPanel = new AquariumView(gameRuleController.getFishes(), gameRuleController.getFoods());
+        aquariumPanel.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                if (!GameLoopController.isAppPaused()) {
+                    gameRuleController.handleAddFoodCommand(e.getX(), e.getY());
+                }
+            }
+        });
 
         controlPanel = new JPanel();
         addFishButton = new JButton("add fish");
         addButtonToControlPanel(addFishButton, "Add Fish");
-        addFoodButton = new JButton("add food");
-        addButtonToControlPanel(addFoodButton, "Add Food");
         sellFishButton = new JButton("sell fish");
         addButtonToControlPanel(sellFishButton, "Sell Fish");
         pauseButton = new JButton("pause");
@@ -129,6 +133,7 @@ public class GuiController extends JFrame implements ActionListener {
         add(aquariumPanel, BorderLayout.CENTER);
         add(controlPanel, BorderLayout.PAGE_END);
         add(statusPanel, BorderLayout.PAGE_START);
+
 
         setVisible(true);
     }
@@ -179,11 +184,11 @@ public class GuiController extends JFrame implements ActionListener {
             if (!GameLoopController.isAppPaused()) {
                 gameRuleController.handleAddFishCommand();
             }
-        } else if (e.getActionCommand() == "add food") {
+        } /*else if (e.getActionCommand() == "add food") {
             if (!GameLoopController.isAppPaused()) {
                 gameRuleController.handleAddFoodCommand();
             }
-        }
+        }*/
     }
 }
 

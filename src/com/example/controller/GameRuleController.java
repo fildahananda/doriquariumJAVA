@@ -58,9 +58,9 @@ public class GameRuleController implements ISubController {
     /**
      * Handle add food command.
      */
-    public void handleAddFoodCommand() {
-        if (Aquarium.money > FOODPRICE) {
-            foodController.addNewEntity();
+    public void handleAddFoodCommand(int xPos, int yPos) {
+        if (Aquarium.money >= FOODPRICE) {
+            foodController.addNewEntity(xPos, yPos);
             Aquarium.money -= FOODPRICE;
         }
     }
