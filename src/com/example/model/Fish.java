@@ -26,9 +26,15 @@ public class Fish extends MovingObject {
     /** The hunger. */
     private int hunger;
 
+    /** The spawning coin time. */
+    private int spawningCoin;
+
     /** The growth. */
     private int growth;
     private boolean removeFlag;
+
+    /** The spawned coin value. */
+    private int spawndCoinValue;
 
     /**
      * Instantiates a new fish.
@@ -47,8 +53,10 @@ public class Fish extends MovingObject {
         super(x, y);
         nextDecisionTimer = -1;
         hunger = 0;
+        spawningCoin = 0;
         growth = 0;
         removeFlag = false;
+        spawndCoinValue = 10;
     }
 
     /*
@@ -75,6 +83,7 @@ public class Fish extends MovingObject {
             }
         }
         increaseHunger(distancePerStep);
+        increaseSpawningCoin(distancePerStep);
     }
 
     /**
@@ -116,12 +125,30 @@ public class Fish extends MovingObject {
     }
 
     /**
+     * Checks if is spawning coin.
+     *
+     * @return true, if is spawning coin
+     */
+    public boolean isSpawningCoin() {
+        return spawningCoin > 1250;
+    }
+
+    /**
      * Increase hunger.
      *
      * @param distanceTaken the distance taken
      */
     private void increaseHunger(float distanceTaken) {
         this.hunger += distancePerStep;
+    }
+
+    /**
+     * Increase spawning coin time.
+     *
+     * @param distanceTaken the distance taken
+     */
+    private void increaseSpawningCoin(float distanceTaken) {
+        this.spawningCoin += distancePerStep;
     }
 
     /**
@@ -164,6 +191,15 @@ public class Fish extends MovingObject {
     }
 
     /**
+     * Gets the coin value.
+     *
+     * @return the coin value
+     */
+    public int getSpawndCoinValue() {
+        return spawndCoinValue;
+    }
+
+    /**
      * Sets the target food.
      *
      * @param targetFood the new target food
@@ -178,6 +214,13 @@ public class Fish extends MovingObject {
     public void hasEaten() {
         this.hunger = 0;
         this.growth += 5;
+    }
+
+    /**
+     * Checks for spawned coin.
+     */
+    public void hasSpawnedCoin() {
+        this.spawningCoin = 0;
     }
 
     public boolean isOnRemoval() {

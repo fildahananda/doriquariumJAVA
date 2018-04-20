@@ -108,7 +108,7 @@ public class GuiController extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.gameRuleController = gameRuleController;
-        aquariumPanel = new AquariumView(gameRuleController.getFishes(), gameRuleController.getFoods());
+        aquariumPanel = new AquariumView(gameRuleController.getFishes(), gameRuleController.getFoods(), gameRuleController.getCoins());
         aquariumPanel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (!GameLoopController.isAppPaused()) {
@@ -184,11 +184,7 @@ public class GuiController extends JFrame implements ActionListener {
             if (!GameLoopController.isAppPaused()) {
                 gameRuleController.handleAddFishCommand();
             }
-        } /*else if (e.getActionCommand() == "add food") {
-            if (!GameLoopController.isAppPaused()) {
-                gameRuleController.handleAddFoodCommand();
-            }
-        }*/
+        }
     }
 }
 

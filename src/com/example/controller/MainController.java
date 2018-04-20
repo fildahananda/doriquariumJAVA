@@ -20,6 +20,9 @@ public class MainController {
     /** The food controller. */
     private static FoodController foodController;
 
+    /** The coin controller. */
+    private static CoinController coinController;
+
     /** The interaction controller. */
     private static InteractionController interactionController;
 
@@ -45,8 +48,9 @@ public class MainController {
         fishController = new FishController();
         fishController.addNewEntity();
         foodController = new FoodController();
-        interactionController = new InteractionController(fishController, foodController);
-        gameRuleController = new GameRuleController(fishController, foodController);
+        coinController = new CoinController();
+        gameRuleController = new GameRuleController(fishController, foodController, coinController);
+        interactionController = new InteractionController(fishController, foodController, coinController, gameRuleController);
     }
 
     /**
@@ -68,6 +72,7 @@ public class MainController {
         List<ISubController> subControllers = new ArrayList<ISubController>();
         subControllers.add(fishController);
         subControllers.add(foodController);
+        subControllers.add(coinController);
         subControllers.add(interactionController);
         subControllers.add(gameRuleController);
         gameLoopController = new GameLoopController(subControllers);

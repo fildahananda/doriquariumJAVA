@@ -3,6 +3,7 @@ package com.example.controller;
 import java.util.List;
 
 import com.example.model.Aquarium;
+import com.example.model.Coin;
 import com.example.model.Fish;
 import com.example.model.Food;
 
@@ -24,15 +25,19 @@ public class GameRuleController implements ISubController {
     /** The food controller. */
     FoodController foodController;
 
+    /** The coin controller. */
+    CoinController coinController;
+
     /**
      * Instantiates a new game rule controller.
      *
      * @param fishController the fish controller
      * @param foodController the food controller
      */
-    public GameRuleController(FishController fishController, FoodController foodController) {
+    public GameRuleController(FishController fishController, FoodController foodController, CoinController coinController) {
         this.fishController = fishController;
         this.foodController = foodController;
+        this.coinController = coinController;
     }
 
     /*
@@ -65,6 +70,13 @@ public class GameRuleController implements ISubController {
         }
     }
 
+    /**
+     * Handle add coin command.
+     */
+    public void handleAddCoinCommand(int xPos, int yPos, int spawnedCoinValue) {
+        coinController.addNewEntity(xPos, yPos, spawnedCoinValue);
+    }
+
     public void handleSellFishCommand(List<Fish> toSell) {
         for (Fish fish : toSell) {
             fish.hasBeenSold();
@@ -89,5 +101,14 @@ public class GameRuleController implements ISubController {
      */
     public List<Food> getFoods() {
         return foodController.getFoods();
+    }
+
+    /**
+     * Gets the coins.
+     *
+     * @return the coins
+     */
+    public List<Coin> getCoins() {
+        return coinController.getCoins();
     }
 }

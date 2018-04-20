@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.model.Aquarium;
 import com.example.model.Fish;
 import com.example.model.Food;
+import com.example.model.Coin;
 import com.example.model.MovingObject;
 
 // TODO: Auto-generated Javadoc
@@ -19,15 +20,25 @@ public class InteractionController implements ISubController {
     /** The foods. */
     private List<Food> foods;
 
+    /** The coins. */
+    private List<Coin> coins;
+
+    /** The game rule controller. */
+
+    private GameRuleController gameRuleController;
+
     /**
      * Instantiates a new interaction controller.
      *
      * @param fishController the fish controller
      * @param foodController the food controller
+     * @param coinController the coin controller
      */
-    public InteractionController(FishController fishController, FoodController foodController) {
+    public InteractionController(FishController fishController, FoodController foodController, CoinController coinController, GameRuleController gameRuleController) {
         fishes = fishController.getFishes();
         foods = foodController.getFoods();
+        coins = coinController.getCoins();
+        this.gameRuleController = gameRuleController;
     }
 
     /*
@@ -46,6 +57,11 @@ public class InteractionController implements ISubController {
                     food.hasBeenEaten();
                     break;
                 }
+            }
+            boolean isSpawningCoin = fish.isSpawningCoin();
+            if (isSpawningCoin) {
+                gameRuleController.handleAddCoinCommand(fish.getX(), fish.getY(), fish.getSpawndCoinValue());
+                fish.hasSpawnedCoin();
             }
         }
     }

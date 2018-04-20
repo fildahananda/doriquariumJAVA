@@ -14,15 +14,18 @@ import javax.imageio.*;
 import javax.swing.JPanel;
 
 import com.example.model.Aquarium;
+import com.example.model.Coin;
 import com.example.model.Fish;
 import com.example.model.Food;
 
 public class AquariumView extends JPanel {
     private List<Fish> fishes;
     private List<Food> foods;
+    private List<Coin> coins;
     private ArrayList<Graphics2D> arrayG;
     private BufferedImage imgBG = null;
     private BufferedImage imgFood = null;
+    private BufferedImage imgCoin = null;
     private BufferedImage imgFish = null;
     private BufferedImage imgFish1 = null;
     private BufferedImage imgFish2 = null;
@@ -68,6 +71,10 @@ public class AquariumView extends JPanel {
             arrayG.add((Graphics2D) g);
             arrayG.get(i).drawImage(imgFood, foods.get(i).getX(), foods.get(i).getY(), null);
         }
+        for (int i = 0; i < coins.size(); i++) {
+            arrayG.add((Graphics2D) g);
+            arrayG.get(i).drawImage(imgCoin, coins.get(i).getX(), coins.get(i).getY(), null);
+        }
         for (int i = 0; i < fishes.size(); i++) {
             arrayG.add((Graphics2D) g);
             if (fishes.get(i).getGrowth() < 50)
@@ -82,12 +89,14 @@ public class AquariumView extends JPanel {
         }
     }
 
-    public AquariumView(List<Fish> fishes, List<Food> foods) {
+    public AquariumView(List<Fish> fishes, List<Food> foods, List<Coin> coins) {
         this.fishes = fishes;
         this.foods = foods;
+        this.coins = coins;
 
         try {
             imgFood = ImageIO.read(new File("./res/img/food.png"));
+            imgCoin = ImageIO.read(new File("./res/img/coin.png"));
             imgFish1 = ImageIO.read(new File("./res/img/fish2_s.png"));
             imgFish2 = ImageIO.read(new File("./res/img/fish2_l.png"));
             backgroundImageInit(bgImg);
