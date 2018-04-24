@@ -25,6 +25,14 @@ public class Coin extends Entity {
         this.coinValue = coinValue;
     }
 
+    public int getCoinValue() {
+        return coinValue;
+    }
+
+    public void setCoinValue(int val){
+        this.coinValue = val;
+    }
+
     /**
      * Checks if is on removal.
      *
@@ -34,18 +42,9 @@ public class Coin extends Entity {
         return removeFlag;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see models.MovingObject#move()
-     */
-    /*
-     * method for moving coin down the aquarium
-     *
-     */
     @Override
     public void move() {
-        if (getY() < Aquarium.HEIGHT - 20) moveDirection(STANDARDDISTANCEPERSTEP / 5, (float) (0.5 * Math.PI));
+        if (getPosition().getX() < Aquarium.HEIGHT - 20) moveDirection(STANDARDDISTANCEPERSTEP / 5, (float) (0.5 * Math.PI));
     }
 
     /**

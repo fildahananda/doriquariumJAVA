@@ -45,7 +45,7 @@ public class CoinController implements ISubController {
     public void perform() {
         removeObsoleteCoins();
         for (Coin coin : coins) {
-            if (!(coin.getY() > Aquarium.HEIGHT + 50)) {
+            if (!(coin.getPosition().getY() > Aquarium.HEIGHT + 50)) {
                 coin.move();
             }
         }

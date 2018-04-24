@@ -9,7 +9,7 @@ import java.util.Random;
 public class Fish extends Entity {
 
     /** The distance per step. */
-    private float distancePerStep = 2;
+    private int distancePerStep = 2;
 
     /** The next decision timer. */
     private int nextDecisionTimer;
@@ -30,7 +30,7 @@ public class Fish extends Entity {
     private int spawningCoin;
 
     /** The growth. */
-    private int growth;
+    private int state;
     private boolean removeFlag;
 
     /** The spawned coin value. */
@@ -54,7 +54,7 @@ public class Fish extends Entity {
         nextDecisionTimer = -1;
         hunger = 0;
         spawningCoin = 0;
-        growth = 0;
+        state = 1;
         removeFlag = false;
         spawnedCoinValue = 100;
     }
@@ -68,7 +68,7 @@ public class Fish extends Entity {
         if (isHungry() && targetFood != null) {
             setTarget(targetFood);
             moveDirection(distancePerStep,
-                    (float) Math.atan2(currentTargetY - this.y, currentTargetX - this.x));
+                    (float) Math.atan2(currentTargetY - this.getPosition().getY(), currentTargetX - this.getPosition().getX()));
             distancePerStep *= 1.001;
         } else {
             if (isTimeToDecideYet()) {
@@ -78,7 +78,7 @@ public class Fish extends Entity {
                 distancePerStep = rand.nextInt(5) + STANDARDDISTANCEPERSTEP / 2;
             } else {
                 moveDirection(distancePerStep,
-                        (float) Math.atan2(currentTargetY - this.y, currentTargetX - this.x));
+                        (float) Math.atan2(currentTargetY - this.getPosition().getY(), currentTargetX - this.getPosition().getX()));
                 nextDecisionTimer--;
             }
         }
@@ -92,7 +92,7 @@ public class Fish extends Entity {
      * @param mo the new target
      */
     private void setTarget(Entity mo) {
-        setTarget(mo.x, mo.y);
+        setTarget(mo.getPosition().getX(), mo.getPosition().getY());
     }
 
     /**
@@ -138,7 +138,7 @@ public class Fish extends Entity {
      *
      * @param distanceTaken the distance taken
      */
-    private void increaseHunger(float distanceTaken) {
+    private void increaseHunger(double distanceTaken) {
         this.hunger += distancePerStep;
     }
 
@@ -147,7 +147,7 @@ public class Fish extends Entity {
      *
      * @param distanceTaken the distance taken
      */
-    private void increaseSpawningCoin(float distanceTaken) {
+    private void increaseSpawningCoin(double distanceTaken) {
         this.spawningCoin += distancePerStep;
     }
 
@@ -166,8 +166,8 @@ public class Fish extends Entity {
      * @return true, if is near target yet
      */
     private boolean isNearTargetYet() {
-        int dx = Math.abs(currentTargetX - this.x);
-        int dy = Math.abs(currentTargetY - this.y);
+        int dx = Math.abs(currentTargetX - this.getPosition().getX());
+        int dy = Math.abs(currentTargetY - this.getPosition().getY());
         return (dx < 10 && dy < 10);
     }
 
@@ -186,8 +186,8 @@ public class Fish extends Entity {
      *
      * @return the growth
      */
-    public int getGrowth() {
-        return growth;
+    public int getState() {
+        return state;
     }
 
     /**
@@ -213,7 +213,7 @@ public class Fish extends Entity {
      */
     public void hasEaten() {
         this.hunger = 0;
-        this.growth += 5;
+        this.state += 1;
     }
 
     /**
@@ -232,7 +232,7 @@ public class Fish extends Entity {
     }
 
     public int value() {
-        return growth * 20;
+        return state * 20;
     }
 }
 

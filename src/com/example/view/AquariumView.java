@@ -71,25 +71,25 @@ public class AquariumView extends JPanel {
         arrayG = new ArrayList<Graphics2D>();
         for (int i = 0; i < foods.size(); i++) {
             arrayG.add((Graphics2D) g);
-            arrayG.get(i).drawImage(imgFood, foods.get(i).getX(), foods.get(i).getY(), null);
+            arrayG.get(i).drawImage(imgFood, foods.get(i).getPosition().getX(), foods.get(i).getPosition().getY(), null);
         }
         for (int i = 0; i < coins.size(); i++) {
             arrayG.add((Graphics2D) g);
-            arrayG.get(i).drawImage(imgCoin, coins.get(i).getX(), coins.get(i).getY(), null);
+            arrayG.get(i).drawImage(imgCoin, coins.get(i).getPosition().getX(), coins.get(i).getPosition().getY(), null);
         }
         for (int i = 0; i < snails.size(); i++) {
             arrayG.add((Graphics2D) g);
-            arrayG.get(i).drawImage(imgSnail, snails.get(i).getX(), snails.get(i).getY(), null);
+            arrayG.get(i).drawImage(imgSnail, snails.get(i).getPosition().getX(), snails.get(i).getPosition().getY(), null);
         }
         for (int i = 0; i < fishes.size(); i++) {
             arrayG.add((Graphics2D) g);
-            if (fishes.get(i).getGrowth() < 50)
+            if (fishes.get(i).getState() < 50)
                 imgFish = imgFish1;
-            else if (fishes.get(i).getGrowth() < 100)
+            else if (fishes.get(i).getState() < 100)
                 imgFish = imgFish2;
             else
                 imgFish = imgFish3;
-            arrayG.get(i).drawImage(imgFish, fishes.get(i).getX(), fishes.get(i).getY(), null);
+            arrayG.get(i).drawImage(imgFish, fishes.get(i).getPosition().getX(), fishes.get(i).getPosition().getY(), null);
         }
 
 //        for (int i = 0; i < 3; i++) {

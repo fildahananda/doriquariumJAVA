@@ -2,66 +2,34 @@ package com.example.model;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MovingObject.
+ * The Class Entity.
  */
 public abstract class Entity {
 
     /** The Constant STANDARDDISTANCEPERSTEP. */
     protected final static int STANDARDDISTANCEPERSTEP = 10;
 
-    /** The x. */
-    protected int x;
+    protected Point position;
 
-    /** The y. */
-    protected int y;
-
-    /** The real X. */
     private float realX;
 
-    /** The real Y. */
     private float realY;
 
-    /**
-     * Gets the x.
-     *
-     * @return the x
-     */
-    public int getX() {
-        return x;
+    public Point getPosition(){
+        return position;
     }
 
-    /**
-     * Sets the x.
-     *
-     * @param x the new x
-     */
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    /**
-     * Gets the y.
-     *
-     * @return the y
-     */
-    public int getY() {
-        return y;
-    }
-
-    /**
-     * Sets the y.
-     *
-     * @param y the new y
-     */
-    public void setY(int y) {
-        this.y = y;
+    public void setPosition(Point position) {
+        this.position = position;
     }
 
     /**
      * Instantiates a new moving object.
      */
     public Entity() {
-        this(0, 0);
+        this.position = new Point(0,0);
+        realX=0;
+        realY=0;
     }
 
     /**
@@ -71,6 +39,7 @@ public abstract class Entity {
      * @param y the y
      */
     public Entity(float x, float y) {
+        this.position = new Point(0,0);
         realX = x;
         realY = y;
         determinePosition();
@@ -88,8 +57,8 @@ public abstract class Entity {
      * @param angle the angle
      */
     public void moveDirection(float distance, float angle) {
-        realX += distance * Math.cos(angle);
-        realY += distance * Math.sin(angle);
+        realX += distance*Math.cos(angle);
+        realY += distance*Math.sin(angle);
         determinePosition();
     }
 
@@ -101,8 +70,8 @@ public abstract class Entity {
      * @param desiredStepTaken the desired step taken
      */
     public void moveTowards(float toX, float toY, float desiredStepTaken) {
-        realX += (toX - this.realX) / desiredStepTaken;
-        realY += (toY - this.realY) / desiredStepTaken;
+        realX = position.getX()+(toX - position.getX())/desiredStepTaken;
+        realY = position.getX()+(toY - position.getX())/desiredStepTaken;
         determinePosition();
     }
 
@@ -110,8 +79,8 @@ public abstract class Entity {
      * Determine position.
      */
     private void determinePosition() {
-        x = Math.round(realX);
-        y = Math.round(realY);
+        this.position.setX(Math.round(realX));
+        this.position.setY(Math.round(realY));
     }
 
     /**
@@ -122,6 +91,6 @@ public abstract class Entity {
      * @return the float
      */
     public static Float calcDistBetween(Entity o1, Entity o2) {
-        return (float) Math.sqrt(Math.pow(o1.realX - o2.realX, 2) + Math.pow(o1.realY - o2.realY, 2));
+        return (float) Math.sqrt(Math.pow(o1.getPosition().getX() - o2.getPosition().getX(), 2) + Math.pow(o1.getPosition().getX() - o2.getPosition().getX(), 2));
     }
 }

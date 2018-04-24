@@ -46,7 +46,7 @@ public class FoodController implements ISubController {
     public void perform() {
         removeObsoleteFoods();
         for (Food food : foods) {
-            if (!(food.getY() > Aquarium.HEIGHT - 20)) {
+            if (!(food.getPosition().getY() > Aquarium.HEIGHT - 20)) {
                 food.move();
             } else {
                 toRemove.add(food);

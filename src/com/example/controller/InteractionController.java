@@ -61,7 +61,7 @@ public class InteractionController implements ISubController {
             }
             boolean isSpawningCoin = fish.isSpawningCoin();
             if (isSpawningCoin) {
-                gameRuleController.handleAddCoinCommand(fish.getX(), fish.getY(), fish.getSpawnedCoinValue());
+                gameRuleController.handleAddCoinCommand(fish.getPosition().getX(), fish.getPosition().getY(), fish.getSpawnedCoinValue());
                 fish.hasSpawnedCoin();
             }
         }
