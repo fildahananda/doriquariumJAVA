@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import com.example.model.Aquarium;
+
 import java.util.ArrayList;
 import java.util.List;
 

@@ -32,6 +32,7 @@ public class Fish extends Entity {
     /** The growth. */
     private int state;
     private boolean removeFlag;
+    private boolean facingRight;
 
     /** The spawned coin value. */
     private int spawnedCoinValue;
@@ -57,6 +58,7 @@ public class Fish extends Entity {
         state = 1;
         removeFlag = false;
         spawnedCoinValue = 100;
+        facingRight = true;
     }
 
     /*
