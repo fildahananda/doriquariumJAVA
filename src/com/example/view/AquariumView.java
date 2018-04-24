@@ -33,7 +33,7 @@ public class AquariumView extends JPanel {
 
     public void backgroundImageInit(ArrayList<BufferedImage> bgImg) {
         try {
-            bgImg.add(ImageIO.read(new File("./res/img/far.png")));
+            bgImg.add(ImageIO.read(new File("./res/img/background.jpg")));
             bgImg.add(ImageIO.read(new File("./res/img/far_top.png")));
             bgImg.add(ImageIO.read(new File("./res/img/far_bot.png")));
             bgImg.add(ImageIO.read(new File("./res/img/sand.png")));
@@ -48,7 +48,7 @@ public class AquariumView extends JPanel {
     public void backgroundImageDraw(Graphics g) {
         Graphics2D tempG = (Graphics2D) g;
 
-        for (int j = 0; j < 2; j++) {
+        /*for (int j = 0; j < 2; j++) {
             for (int i = 0; i < 3; i++) {
                 // bg-top
                 tempG.drawImage(bgImg.get(1), i * 256, j * 192, null);
@@ -63,8 +63,10 @@ public class AquariumView extends JPanel {
         for (int i = 0; i < 3; i++) {
             // bg-far
             tempG.drawImage(bgImg.get(0), i * 256, 152, null);
-            tempG.drawImage(bgImg.get(3), i * 256, 420 - 192, null);
-        }
+            //tempG.drawImage(bgImg.get(3), i * 256, 420 - 192, null);
+        }*/
+
+        tempG.drawImage(bgImg.get(0), 0, 5, null);
 
         arrayG = new ArrayList<Graphics2D>();
         for (int i = 0; i < foods.size(); i++) {
@@ -97,8 +99,8 @@ public class AquariumView extends JPanel {
         try {
             imgFood = ImageIO.read(new File("./res/img/food.png"));
             imgCoin = ImageIO.read(new File("./res/img/coin.png"));
-            imgFish1 = ImageIO.read(new File("./res/img/fish2_s.png"));
-            imgFish2 = ImageIO.read(new File("./res/img/fish2_l.png"));
+            imgFish1 = ImageIO.read(new File("./res/img/guppy_1.png"));
+            imgFish2 = ImageIO.read(new File("./res/img/guppy_2.png"));
             backgroundImageInit(bgImg);
         } catch (IOException e) {
             e.printStackTrace();

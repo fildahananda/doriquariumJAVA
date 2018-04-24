@@ -6,10 +6,10 @@ package com.example.model;
  */
 public class Aquarium {
     /** The Constant WIDTH. */
-    public static final int WIDTH = 400;
+    public static final int WIDTH = 750;
 
     /** The Constant HEIGHT. */
-    public static final int HEIGHT = 400;
+    public static final int HEIGHT = 422;
 
     /** The money. */
     public static int money = 1000;
