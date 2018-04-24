@@ -25,6 +25,8 @@ public class AquariumView extends JPanel {
     private BufferedImage imgFood = null;
     private BufferedImage imgCoin = null;
     private BufferedImage imgSnail = null;
+    private BufferedImage imgSnail_left = null;
+    private BufferedImage imgSnail_right = null;
     private BufferedImage imgFish = null;
     private BufferedImage imgFish1 = null;
     private BufferedImage imgFish2 = null;
@@ -79,6 +81,10 @@ public class AquariumView extends JPanel {
         }
         for (int i = 0; i < snails.size(); i++) {
             arrayG.add((Graphics2D) g);
+            if (snails.get(i).isFacingRight())
+                imgSnail = imgSnail_right;
+            else
+                imgSnail = imgSnail_left;
             arrayG.get(i).drawImage(imgSnail, snails.get(i).getX(), snails.get(i).getY(), null);
         }
         for (int i = 0; i < fishes.size(); i++) {
@@ -106,7 +112,8 @@ public class AquariumView extends JPanel {
         try {
             imgFood = ImageIO.read(new File("./res/img/food.png"));
             imgCoin = ImageIO.read(new File("./res/img/coin.png"));
-            imgSnail = ImageIO.read(new File("./res/img/snail.png"));
+            imgSnail_left = ImageIO.read(new File("./res/img/snail.png"));
+            imgSnail_right = ImageIO.read(new File("./res/img/snail_R.png"));
             imgFish1 = ImageIO.read(new File("./res/img/fish2_s.png"));
             imgFish2 = ImageIO.read(new File("./res/img/fish2_l.png"));
             imgFish3 = ImageIO.read(new File("./res/img/fish_red.png"));

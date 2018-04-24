@@ -20,6 +20,9 @@ public class Snail extends Entity {
     /** The target coin. */
     private Coin targetCoin;
 
+    /** The direction snail is facing. */
+    private boolean facingRight;
+
     private boolean removeFlag;
 
     /**
@@ -37,6 +40,7 @@ public class Snail extends Entity {
      */
     public Snail(int x, int y) {
         super(x, y);
+        facingRight = true;
         removeFlag = false;
     }
 
@@ -50,27 +54,8 @@ public class Snail extends Entity {
             setTarget(targetCoin);
             moveDirection(distancePerStep, currentTargetX - this.x >= 0 ? 0 : (float) Math.PI);
             distancePerStep *= 1.001;
+            facingRight = currentTargetX - this.x >= 0 ? true : false;
         }
-
-//        if (isHungry() && targetFood != null) {
-//            setTarget(targetFood);
-//            moveDirection(distancePerStep,
-//                    (float) Math.atan2(currentTargetY - this.y, currentTargetX - this.x));
-//            distancePerStep *= 1.001;
-//        } else {
-//            if (isTimeToDecideYet()) {
-//                Random rand = new Random();
-//                nextDecisionTimer = rand.nextInt(30) + 15;
-//                setTarget(rand.nextInt(Aquarium.WIDTH), rand.nextInt(Aquarium.HEIGHT));
-//                distancePerStep = rand.nextInt(5) + STANDARDDISTANCEPERSTEP / 2;
-//            } else {
-//                moveDirection(distancePerStep,
-//                        (float) Math.atan2(currentTargetY - this.y, currentTargetX - this.x));
-//                nextDecisionTimer--;
-//            }
-//        }
-//        increaseHunger(distancePerStep);
-//        increaseSpawningCoin(distancePerStep);
     }
 
     /**
@@ -114,11 +99,15 @@ public class Snail extends Entity {
     }
 
     /**
+     * Checks direction snail is facing.
+     */
+    public boolean isFacingRight() { return facingRight; }
+
+    /**
      * Checks for eaten.
      */
     public void hasEaten() {
-//        this.hunger = 0;
-//        this.growth += 5;
+
     }
 
     public boolean isOnRemoval() {
