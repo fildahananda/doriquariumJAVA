@@ -4,7 +4,7 @@ package com.example.model;
 /**
  * The Class Coin.
  */
-public class Coin extends MovingObject {
+public class Coin extends Entity {
 
     /** The remove flag. */
     private boolean removeFlag;

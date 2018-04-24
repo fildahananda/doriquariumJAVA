@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * The Class Fish.
  */
-public class Fish extends MovingObject {
+public class Fish extends Entity {
 
     /** The distance per step. */
     private float distancePerStep = 2;
@@ -91,7 +91,7 @@ public class Fish extends MovingObject {
      *
      * @param mo the new target
      */
-    private void setTarget(MovingObject mo) {
+    private void setTarget(Entity mo) {
         setTarget(mo.x, mo.y);
     }
 

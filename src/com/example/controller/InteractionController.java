@@ -52,7 +52,7 @@ public class InteractionController implements ISubController {
         for (Fish fish : fishes) {
             fish.setTargetFood(GetClosestFoodFrom(fish));
             for (Food food : foods) {
-                boolean eatingStatus = (MovingObject.calcDistBetween(fish, food) < 10);
+                boolean eatingStatus = (Entity.calcDistBetween(fish, food) < 10);
                 if (eatingStatus && fish.isHungry()) {
                     fish.hasEaten();
                     food.hasBeenEaten();
@@ -69,7 +69,7 @@ public class InteractionController implements ISubController {
         for (Snail snail : snails) {
             snail.setTargetCoin(GetClosestCoinFrom(snail));
             for (Coin coin : coins) {
-                boolean eatingStatus = (MovingObject.calcDistBetween(snail, coin) < 40);
+                boolean eatingStatus = (Entity.calcDistBetween(snail, coin) < 40);
                 if (eatingStatus) {
                     snail.hasEaten();
                     coin.hasBeenEaten();
@@ -93,7 +93,7 @@ public class InteractionController implements ISubController {
         for (Food checkingFood : foods) {
             if (closestFood == null) {
                 closestFood = checkingFood;
-            } else if (MovingObject.calcDistBetween(closestFood, fish) > MovingObject
+            } else if (Entity.calcDistBetween(closestFood, fish) > Entity
                     .calcDistBetween(checkingFood, fish)) {
                 closestFood = checkingFood;
             }
@@ -115,7 +115,7 @@ public class InteractionController implements ISubController {
         for (Coin checkingCoin : coins) {
             if (closestCoin == null) {
                 closestCoin = checkingCoin;
-            } else if (MovingObject.calcDistBetween(closestCoin, snail) > MovingObject
+            } else if (Entity.calcDistBetween(closestCoin, snail) > Entity
                     .calcDistBetween(checkingCoin, snail)) {
                 closestCoin = checkingCoin;
             }

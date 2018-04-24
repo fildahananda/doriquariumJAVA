@@ -4,7 +4,7 @@ package com.example.model;
 /**
  * The Class MovingObject.
  */
-public abstract class MovingObject {
+public abstract class Entity {
 
     /** The Constant STANDARDDISTANCEPERSTEP. */
     protected final static int STANDARDDISTANCEPERSTEP = 10;
@@ -60,7 +60,7 @@ public abstract class MovingObject {
     /**
      * Instantiates a new moving object.
      */
-    public MovingObject() {
+    public Entity() {
         this(0, 0);
     }
 
@@ -70,7 +70,7 @@ public abstract class MovingObject {
      * @param x the x
      * @param y the y
      */
-    public MovingObject(float x, float y) {
+    public Entity(float x, float y) {
         realX = x;
         realY = y;
         determinePosition();
@@ -121,7 +121,7 @@ public abstract class MovingObject {
      * @param o2 the o 2
      * @return the float
      */
-    public static Float calcDistBetween(MovingObject o1, MovingObject o2) {
+    public static Float calcDistBetween(Entity o1, Entity o2) {
         return (float) Math.sqrt(Math.pow(o1.realX - o2.realX, 2) + Math.pow(o1.realY - o2.realY, 2));
     }
 }
