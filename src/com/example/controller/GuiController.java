@@ -108,7 +108,7 @@ public class GuiController extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.gameRuleController = gameRuleController;
-        aquariumPanel = new AquariumView(gameRuleController.getFishes(), gameRuleController.getFoods(), gameRuleController.getCoins());
+        aquariumPanel = new AquariumView(gameRuleController.getFishes(), gameRuleController.getFoods(), gameRuleController.getCoins(), gameRuleController.getSnails());
         aquariumPanel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 if (!GameLoopController.isAppPaused()) {

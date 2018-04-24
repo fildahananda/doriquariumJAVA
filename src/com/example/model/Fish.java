@@ -34,7 +34,7 @@ public class Fish extends MovingObject {
     private boolean removeFlag;
 
     /** The spawned coin value. */
-    private int spawndCoinValue;
+    private int spawnedCoinValue;
 
     /**
      * Instantiates a new fish.
@@ -56,7 +56,7 @@ public class Fish extends MovingObject {
         spawningCoin = 0;
         growth = 0;
         removeFlag = false;
-        spawndCoinValue = 10;
+        spawnedCoinValue = 100;
     }
 
     /*
@@ -74,7 +74,7 @@ public class Fish extends MovingObject {
             if (isTimeToDecideYet()) {
                 Random rand = new Random();
                 nextDecisionTimer = rand.nextInt(30) + 15;
-                setTarget(rand.nextInt(Aquarium.WIDTH), rand.nextInt(Aquarium.HEIGHT));
+                setTarget(rand.nextInt(Aquarium.WIDTH), rand.nextInt(Aquarium.HEIGHT) - 70);
                 distancePerStep = rand.nextInt(5) + STANDARDDISTANCEPERSTEP / 2;
             } else {
                 moveDirection(distancePerStep,
@@ -195,8 +195,8 @@ public class Fish extends MovingObject {
      *
      * @return the coin value
      */
-    public int getSpawndCoinValue() {
-        return spawndCoinValue;
+    public int getSpawnedCoinValue() {
+        return spawnedCoinValue;
     }
 
     /**

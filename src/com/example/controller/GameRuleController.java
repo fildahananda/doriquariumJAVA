@@ -2,10 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
-import com.example.model.Aquarium;
-import com.example.model.Coin;
-import com.example.model.Fish;
-import com.example.model.Food;
+import com.example.model.*;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -28,16 +25,22 @@ public class GameRuleController implements ISubController {
     /** The coin controller. */
     CoinController coinController;
 
+    /** The snail controller. */
+    SnailController snailController;
+
     /**
      * Instantiates a new game rule controller.
      *
      * @param fishController the fish controller
      * @param foodController the food controller
+     * @param coinController the coin controller
+     * @param snailController the snail controller
      */
-    public GameRuleController(FishController fishController, FoodController foodController, CoinController coinController) {
+    public GameRuleController(FishController fishController, FoodController foodController, CoinController coinController, SnailController snailController) {
         this.fishController = fishController;
         this.foodController = foodController;
         this.coinController = coinController;
+        this.snailController = snailController;
     }
 
     /*
@@ -110,5 +113,14 @@ public class GameRuleController implements ISubController {
      */
     public List<Coin> getCoins() {
         return coinController.getCoins();
+    }
+
+    /**
+     * Gets the snails.
+     *
+     * @return the snails
+     */
+    public List<Snail> getSnails() {
+        return snailController.getSnails();
     }
 }

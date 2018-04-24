@@ -23,6 +23,9 @@ public class MainController {
     /** The coin controller. */
     private static CoinController coinController;
 
+    /** The snail controller. */
+    private static SnailController snailController;
+
     /** The interaction controller. */
     private static InteractionController interactionController;
 
@@ -49,8 +52,10 @@ public class MainController {
         fishController.addNewEntity();
         foodController = new FoodController();
         coinController = new CoinController();
-        gameRuleController = new GameRuleController(fishController, foodController, coinController);
-        interactionController = new InteractionController(fishController, foodController, coinController, gameRuleController);
+        snailController = new SnailController();
+        snailController.addNewEntity();
+        gameRuleController = new GameRuleController(fishController, foodController, coinController, snailController);
+        interactionController = new InteractionController(fishController, foodController, coinController, snailController, gameRuleController);
     }
 
     /**
@@ -73,6 +78,7 @@ public class MainController {
         subControllers.add(fishController);
         subControllers.add(foodController);
         subControllers.add(coinController);
+        subControllers.add(snailController);
         subControllers.add(interactionController);
         subControllers.add(gameRuleController);
         gameLoopController = new GameLoopController(subControllers);
