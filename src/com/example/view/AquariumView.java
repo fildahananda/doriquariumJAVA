@@ -89,9 +89,9 @@ public class AquariumView extends JPanel {
         }
         for (int i = 0; i < fishes.size(); i++) {
             arrayG.add((Graphics2D) g);
-            if (fishes.get(i).getState() < 50)
+            if (fishes.get(i).getState() == 1)
                 imgFish = imgFish1;
-            else if (fishes.get(i).getState() < 100)
+            else if (fishes.get(i).getState() == 2)
                 imgFish = imgFish2;
             else
                 imgFish = imgFish3;
@@ -114,9 +114,9 @@ public class AquariumView extends JPanel {
             imgCoin = ImageIO.read(new File("./res/img/coin.png"));
             imgSnail_left = ImageIO.read(new File("./res/img/snail.png"));
             imgSnail_right = ImageIO.read(new File("./res/img/snail_R.png"));
-            imgFish1 = ImageIO.read(new File("./res/img/fish2_s.png"));
-            imgFish2 = ImageIO.read(new File("./res/img/fish2_l.png"));
-            imgFish3 = ImageIO.read(new File("./res/img/fish_red.png"));
+            imgFish1 = ImageIO.read(new File("./res/img/guppy_1.png"));
+            imgFish2 = ImageIO.read(new File("./res/img/guppy_2.png"));
+            imgFish3 = ImageIO.read(new File("./res/img/guppy_3.png"));
 
             backgroundImageInit(bgImg);
         } catch (IOException e) {
