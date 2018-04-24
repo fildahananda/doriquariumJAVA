@@ -1,6 +1,11 @@
 # file: ~/.gitignore_global
 .DS_Store
-.idea
+.idea/
 
 # Compiled Java Class
-out/
+*.class
+
+# XML
+*.xml
+
+*.iml
