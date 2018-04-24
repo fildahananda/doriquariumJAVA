@@ -49,15 +49,6 @@ public class SnailController implements ISubController {
      */
     @Override
     public void perform() {
-//        removeObsoleteSnails();
-//        for (Snail snail : snails) {
-//            if (!snail.isDeadByStarvation()) {
-//                snail.move();
-//            } else {
-//                toRemove.add(snail);
-//            }
-//        }
-
         for (Snail snail : snails) {
             snail.move();
         }
@@ -67,10 +58,6 @@ public class SnailController implements ISubController {
      * Adds the new entity.
      */
     public void addNewEntity() {
-//        Random random = new Random();
-//        int bound = Aquarium.WIDTH / 10;
-//        int randX = bound + random.nextInt(Aquarium.WIDTH - (2 * bound));
-//        int randY = bound + random.nextInt(Aquarium.HEIGHT - (2 * bound));
         Snail newSnail = new Snail(Aquarium.WIDTH / 2, Aquarium.HEIGHT - 50);
         snails.add(newSnail);
     }
