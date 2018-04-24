@@ -58,7 +58,7 @@ public class SnailController implements ISubController {
      * Adds the new entity.
      */
     public void addNewEntity() {
-        Snail newSnail = new Snail(Aquarium.WIDTH / 2, Aquarium.HEIGHT - 50);
+        Snail newSnail = new Snail(Aquarium.WIDTH / 2, Aquarium.HEIGHT - 55);
         snails.add(newSnail);
     }
 

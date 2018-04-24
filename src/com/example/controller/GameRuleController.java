@@ -87,6 +87,11 @@ public class GameRuleController implements ISubController {
         }
     }
 
+    public void handleBuyEggCommand(){
+        Aquarium.money -= 1000;
+        Aquarium.egg++;
+    }
+
     /**
      * Gets the fishes.
      *

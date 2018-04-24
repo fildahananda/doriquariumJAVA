@@ -44,7 +44,7 @@ public class Coin extends Entity {
 
     @Override
     public void move() {
-        if (getPosition().getX() < Aquarium.HEIGHT - 20) moveDirection(STANDARDDISTANCEPERSTEP / 5, (float) (0.5 * Math.PI));
+        if (getPosition().getY() < Aquarium.HEIGHT - 20) moveDirection(STANDARDDISTANCEPERSTEP / 5, (float) (0.5 * Math.PI));
     }
 
     /**

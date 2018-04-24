@@ -15,39 +15,25 @@ import com.example.model.Fish;
  */
 public class StatusPanelView extends JPanel {
 
-    /** The fishes. */
-    private List<Fish> fishes;
-
     /** The money status. */
     private JLabel moneyStatus;
 
     /** The fish number status. */
-    private JLabel fishNumberStatus;
+    private JLabel eggNumberStatus;
 
-    /**
-     * Instantiates a new status panel view.
-     *
-     * @param fishes the fishes
-     */
-    public StatusPanelView(List<Fish> fishes) {
-        this.fishes = fishes;
+    public StatusPanelView() {
         add(new JLabel("money : "));
         moneyStatus = new JLabel(Integer.toString(Aquarium.money));
         add(moneyStatus);
-        add(new JLabel("fish alive : "));
-        fishNumberStatus = new JLabel(Integer.toString(fishes.size()));
-        add(fishNumberStatus);
+        add(new JLabel("egg : "));
+        eggNumberStatus = new JLabel(Integer.toString(Aquarium.egg));
+        add(eggNumberStatus);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
-     */
     @Override
     protected void paintComponent(Graphics g) {
         moneyStatus.setText(Integer.toString(Aquarium.money));
-        fishNumberStatus.setText(Integer.toString(fishes.size()));
+        eggNumberStatus.setText(Integer.toString(Aquarium.egg));
         super.paintComponent(g);
     }
 }

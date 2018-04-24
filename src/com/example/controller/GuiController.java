@@ -122,10 +122,10 @@ public class GuiController extends JFrame implements ActionListener {
         addButtonToControlPanel(addFishButton, "Add Fish");
         sellFishButton = new JButton("sell fish");
         addButtonToControlPanel(sellFishButton, "Sell Fish");
-        pauseButton = new JButton("pause");
-        addButtonToControlPanel(pauseButton, "Pause");
+        pauseButton = new JButton("buy egg");
+        addButtonToControlPanel(pauseButton, "Buy Egg");
 
-        statusPanel = new StatusPanelView(gameRuleController.getFishes());
+        statusPanel = new StatusPanelView();
 
         sellDialog = new SellDialog(this, "Sell", true);
 
@@ -166,13 +166,10 @@ public class GuiController extends JFrame implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() == "pause") {
-            GameLoopController.togglePause();
-            if (GameLoopController.isAppPaused()) {
-                pauseButton.setText("unpause");
-            } else {
-                pauseButton.setText("pause");
-            }
+        if (e.getActionCommand() == "buy egg") {
+            //GameLoopController.togglePause();
+            gameRuleController.handleBuyEggCommand();
+
         } else if (e.getActionCommand() == "sell fish") {
             GameLoopController.togglePause();
 
