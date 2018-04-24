@@ -1,2 +1,8 @@
+# Intellij Setting
+
 .idea/
-.class
+
+
+# Compiled Java Class
+
+out/
