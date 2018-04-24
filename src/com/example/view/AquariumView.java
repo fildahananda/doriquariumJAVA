@@ -13,22 +13,22 @@ import javax.imageio.*;
 
 import javax.swing.JPanel;
 
-import com.example.model.Aquarium;
-import com.example.model.Coin;
-import com.example.model.Fish;
-import com.example.model.Food;
+import com.example.model.*;
 
 public class AquariumView extends JPanel {
     private List<Fish> fishes;
     private List<Food> foods;
     private List<Coin> coins;
+    private List<Snail> snails;
     private ArrayList<Graphics2D> arrayG;
     private BufferedImage imgBG = null;
     private BufferedImage imgFood = null;
     private BufferedImage imgCoin = null;
+    private BufferedImage imgSnail = null;
     private BufferedImage imgFish = null;
     private BufferedImage imgFish1 = null;
     private BufferedImage imgFish2 = null;
+    private BufferedImage imgFish3 = null;
     private ArrayList<BufferedImage> bgImg = new ArrayList<BufferedImage>();
 
     public void backgroundImageInit(ArrayList<BufferedImage> bgImg) {
@@ -77,12 +77,18 @@ public class AquariumView extends JPanel {
             arrayG.add((Graphics2D) g);
             arrayG.get(i).drawImage(imgCoin, coins.get(i).getX(), coins.get(i).getY(), null);
         }
+        for (int i = 0; i < snails.size(); i++) {
+            arrayG.add((Graphics2D) g);
+            arrayG.get(i).drawImage(imgSnail, snails.get(i).getX(), snails.get(i).getY(), null);
+        }
         for (int i = 0; i < fishes.size(); i++) {
             arrayG.add((Graphics2D) g);
             if (fishes.get(i).getGrowth() < 50)
                 imgFish = imgFish1;
-            else
+            else if (fishes.get(i).getGrowth() < 100)
                 imgFish = imgFish2;
+            else
+                imgFish = imgFish3;
             arrayG.get(i).drawImage(imgFish, fishes.get(i).getX(), fishes.get(i).getY(), null);
         }
 
@@ -91,16 +97,20 @@ public class AquariumView extends JPanel {
 //        }
     }
 
-    public AquariumView(List<Fish> fishes, List<Food> foods, List<Coin> coins) {
+    public AquariumView(List<Fish> fishes, List<Food> foods, List<Coin> coins, List<Snail> snails) {
         this.fishes = fishes;
         this.foods = foods;
         this.coins = coins;
+        this.snails = snails;
 
         try {
             imgFood = ImageIO.read(new File("./res/img/food.png"));
             imgCoin = ImageIO.read(new File("./res/img/coin.png"));
-            imgFish1 = ImageIO.read(new File("./res/img/guppy_1.png"));
-            imgFish2 = ImageIO.read(new File("./res/img/guppy_2.png"));
+            imgSnail = ImageIO.read(new File("./res/img/snail.png"));
+            imgFish1 = ImageIO.read(new File("./res/img/fish2_s.png"));
+            imgFish2 = ImageIO.read(new File("./res/img/fish2_l.png"));
+            imgFish3 = ImageIO.read(new File("./res/img/fish_red.png"));
+
             backgroundImageInit(bgImg);
         } catch (IOException e) {
             e.printStackTrace();

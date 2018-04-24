@@ -53,6 +53,7 @@ public class Coin extends MovingObject {
      */
     public void hasBeenEaten() {
         removeFlag = true;
+        Aquarium.money += coinValue;
     }
 }
 

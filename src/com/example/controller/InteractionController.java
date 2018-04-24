@@ -2,11 +2,7 @@ package com.example.controller;
 
 import java.util.List;
 
-import com.example.model.Aquarium;
-import com.example.model.Fish;
-import com.example.model.Food;
-import com.example.model.Coin;
-import com.example.model.MovingObject;
+import com.example.model.*;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -23,6 +19,9 @@ public class InteractionController implements ISubController {
     /** The coins. */
     private List<Coin> coins;
 
+    /** The snails. */
+    private List<Snail> snails;
+
     /** The game rule controller. */
 
     private GameRuleController gameRuleController;
@@ -33,11 +32,13 @@ public class InteractionController implements ISubController {
      * @param fishController the fish controller
      * @param foodController the food controller
      * @param coinController the coin controller
+     * @param snailController the snail controller
      */
-    public InteractionController(FishController fishController, FoodController foodController, CoinController coinController, GameRuleController gameRuleController) {
+    public InteractionController(FishController fishController, FoodController foodController, CoinController coinController, SnailController snailController, GameRuleController gameRuleController) {
         fishes = fishController.getFishes();
         foods = foodController.getFoods();
         coins = coinController.getCoins();
+        snails = snailController.getSnails();
         this.gameRuleController = gameRuleController;
     }
 
@@ -60,8 +61,20 @@ public class InteractionController implements ISubController {
             }
             boolean isSpawningCoin = fish.isSpawningCoin();
             if (isSpawningCoin) {
-                gameRuleController.handleAddCoinCommand(fish.getX(), fish.getY(), fish.getSpawndCoinValue());
+                gameRuleController.handleAddCoinCommand(fish.getX(), fish.getY(), fish.getSpawnedCoinValue());
                 fish.hasSpawnedCoin();
+            }
+        }
+
+        for (Snail snail : snails) {
+            snail.setTargetCoin(GetClosestCoinFrom(snail));
+            for (Coin coin : coins) {
+                boolean eatingStatus = (MovingObject.calcDistBetween(snail, coin) < 40);
+                if (eatingStatus) {
+                    snail.hasEaten();
+                    coin.hasBeenEaten();
+                    break;
+                }
             }
         }
     }
@@ -86,6 +99,28 @@ public class InteractionController implements ISubController {
             }
         }
         return closestFood;
+    }
+
+    /**
+     * Gets the closest coin from.
+     *
+     * @param snail the snail
+     * @return the coin
+     */
+    private Coin GetClosestCoinFrom(Snail snail) {
+        if (coins.isEmpty()) {
+            return null;
+        }
+        Coin closestCoin = null;
+        for (Coin checkingCoin : coins) {
+            if (closestCoin == null) {
+                closestCoin = checkingCoin;
+            } else if (MovingObject.calcDistBetween(closestCoin, snail) > MovingObject
+                    .calcDistBetween(checkingCoin, snail)) {
+                closestCoin = checkingCoin;
+            }
+        }
+        return closestCoin;
     }
 }
 
