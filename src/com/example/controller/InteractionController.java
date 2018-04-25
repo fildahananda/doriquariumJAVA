@@ -90,7 +90,7 @@ public class InteractionController implements ISubController {
         for (Snail snail : snails) {
             snail.setTargetCoin(GetClosestCoinFrom(snail));
             for (Coin coin : coins) {
-                boolean eatingStatus = (Entity.calcDistBetween(snail, coin) < 10);
+                boolean eatingStatus = (Entity.calcDistBetween(snail, coin) < 30);
                 if (eatingStatus) {
                     snail.hasEaten();
                     coin.hasBeenEaten();

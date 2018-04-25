@@ -55,7 +55,6 @@ public class MainController {
         guppyController = new GuppyController();
         guppyController.addNewEntity();
         piranhaController = new PiranhaController();
-        piranhaController.addNewEntity();
         foodController = new FoodController();
         coinController = new CoinController();
         snailController = new SnailController();
