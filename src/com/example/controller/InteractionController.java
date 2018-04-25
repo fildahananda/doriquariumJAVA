@@ -1,8 +1,8 @@
 package com.example.controller;
 
-import java.util.List;
-
 import com.example.model.*;
+
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
