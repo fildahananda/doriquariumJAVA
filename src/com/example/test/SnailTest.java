@@ -1,28 +1,29 @@
 package com.example.test;
 
+import com.example.model.Coin;
+import com.example.model.Snail;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class SnailTest {
 
-    @Test
-    public void move() {
-    }
+    Snail snail = new Snail();
 
     @Test
     public void setTargetCoin() {
+        Coin coin = new Coin(10, 0, 0);
+        snail.setTargetCoin(coin);
+        assertSame(coin, snail.getTargetCoin());
     }
 
     @Test
     public void isFacingRight() {
-    }
-
-    @Test
-    public void hasEaten() {
+        assertTrue(snail.isFacingRight());
     }
 
     @Test
     public void isOnRemoval() {
+        assertFalse(snail.isOnRemoval());
     }
 }
