@@ -9,4 +9,12 @@ public class CoinControllerTest {
     @Test
     public void getCoins() {
     }
+
+    @Test
+    public void perform() {
+    }
+
+    @Test
+    public void addNewEntity() {
+    }
 }

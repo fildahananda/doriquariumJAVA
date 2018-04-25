@@ -4,13 +4,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class FishControllerTest {
+public class GuiControllerTest {
 
     @Test
-    public void getFishes() {
+    public void staticRepaint() {
     }
 
     @Test
-    public void getNumberOfFish() {
+    public void actionPerformed() {
     }
 }

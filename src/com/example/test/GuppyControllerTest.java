@@ -4,10 +4,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SnailControllerTest {
+public class GuppyControllerTest {
 
     @Test
-    public void getSnails() {
+    public void getGuppies() {
     }
 
     @Test
