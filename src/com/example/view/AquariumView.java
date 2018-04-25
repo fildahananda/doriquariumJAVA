@@ -29,6 +29,7 @@ public class AquariumView extends JPanel {
     private BufferedImage imgSnail_left = null;
     private BufferedImage imgSnail_right = null;
     private BufferedImage imgFish = null;
+    private BufferedImage imgFishP = null;
     private BufferedImage imgFish1 = null;
     private BufferedImage imgFish1_R = null;
     private BufferedImage imgFish2 = null;
@@ -99,7 +100,11 @@ public class AquariumView extends JPanel {
             }
             for (int i = 0; i < piranhas.size(); i++) {
                 arrayG.add((Graphics2D) g);
-                arrayG.get(i).drawImage(imgFish4, piranhas.get(i).getPosition().getX(), piranhas.get(i).getPosition().getY(), null);
+                if (piranhas.get(i).isFacingRight())
+                    imgFishP = imgFish4;
+                else
+                    imgFishP = imgFish4_R;
+                arrayG.get(i).drawImage(imgFishP, piranhas.get(i).getPosition().getX(), piranhas.get(i).getPosition().getY(), null);
             }
 
         }else if(Aquarium.egg>=3){

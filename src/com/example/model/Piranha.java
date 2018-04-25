@@ -84,6 +84,7 @@ public class Piranha extends Entity implements Fish {
         }
         increaseHunger(distancePerStep);
         increaseSpawningCoin(distancePerStep);
+        facingRight = currentTargetX - this.getPosition().getX() >= 0 ? true : false;
     }
 
     /**
@@ -220,5 +221,12 @@ public class Piranha extends Entity implements Fish {
     public void hasBeenSold() {
         removeFlag = true;
     }
+
+    /**
+     * Checks direction fish is facing.
+     *
+     * @return facingRight the fish facing
+     */
+    public boolean isFacingRight() { return facingRight; }
 }
 
