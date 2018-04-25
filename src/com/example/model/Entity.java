@@ -104,6 +104,6 @@ public abstract class Entity {
      * @return the float
      */
     public static Float calcDistBetween(Entity o1, Entity o2) {
-        return (float) Math.sqrt(Math.pow(o1.getPosition().getX() - o2.getPosition().getX(), 2) + Math.pow(o1.getPosition().getX() - o2.getPosition().getX(), 2));
+        return (float) Math.sqrt(Math.pow(o1.getPosition().getX() - o2.getPosition().getX(), 2) + Math.pow(o1.getPosition().getY() - o2.getPosition().getY(), 2));
     }
 }
