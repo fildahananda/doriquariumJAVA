@@ -11,6 +11,18 @@ public class GameLoopControllerTest {
     }
 
     @Test
+    public void togglePause() {
+    }
+
+    @Test
     public void doInBackground() {
+    }
+
+    @Test
+    public void process() {
+    }
+
+    @Test
+    public void done() {
     }
 }

@@ -4,10 +4,10 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CoinControllerTest {
+public class PiranhaControllerTest {
 
     @Test
-    public void getCoins() {
+    public void getPiranhas() {
     }
 
     @Test
