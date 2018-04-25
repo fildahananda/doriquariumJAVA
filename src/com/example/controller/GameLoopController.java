@@ -48,8 +48,8 @@ public class GameLoopController extends SwingWorker<String, Boolean> {
     /**
      * Toggle pause.
      */
-    public static void toggleClose() {
-        isAppRunning = !isAppRunning;
+    public static void togglePause() {
+        isAppPaused = !isAppPaused;
     }
 
     /*

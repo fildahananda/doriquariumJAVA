@@ -16,6 +16,7 @@ public class GameRuleController implements ISubController {
     /** The Constant FOODPRICE. */
     private static final int FOODPRICE = 20;
 
+    /** The Constant EGGPRICE. */
     private static final int EGGPRICE = 1000;
 
     /** The fish controller. */
@@ -56,7 +57,7 @@ public class GameRuleController implements ISubController {
     }
 
     /**
-     * Handle add fish command.
+     * Handle buy fish command.
      */
     public void handleBuyFishCommand() {
         if (Aquarium.money >= FISHPRICE) {
@@ -66,7 +67,7 @@ public class GameRuleController implements ISubController {
     }
 
     /**
-     * Handle add food command.
+     * Handle buy food command.
      */
     public void handleAddFoodCommand(int xPos, int yPos) {
         if (Aquarium.money >= FOODPRICE) {
@@ -82,6 +83,9 @@ public class GameRuleController implements ISubController {
         coinController.addNewEntity(xPos, yPos, spawnedCoinValue);
     }
 
+    /**
+     * Handle buy egg command.
+     */
     public void handleBuyEggCommand(){
          if(Aquarium.money>=EGGPRICE) {
              Aquarium.money -= EGGPRICE;

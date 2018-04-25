@@ -23,6 +23,7 @@ public class Snail extends Entity {
     /** The direction snail is facing. */
     private boolean facingRight;
 
+    /** The remove flag. */
     private boolean removeFlag;
 
     /**
@@ -110,6 +111,11 @@ public class Snail extends Entity {
 
     }
 
+    /**
+     * Checks if is on removal.
+     *
+     * @return true, if is on removal
+     */
     public boolean isOnRemoval() {
         return removeFlag;
     }

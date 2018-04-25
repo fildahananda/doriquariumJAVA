@@ -2,14 +2,13 @@ package com.example.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import com.example.model.Aquarium;
 import com.example.model.Snail;
-import com.example.model.Coin;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class SnailController.
  * SnailController class managing snails outside its behavior.
  *
  */
@@ -18,11 +17,11 @@ public class SnailController implements ISubController {
     /** The snails. */
     private List<Snail> snails;
 
-    /** The to remove. */
+    /** The list of snails to remove. */
     private List<Snail> toRemove;
 
     /**
-     * Instantiates a new fish controller.
+     * Instantiates a new snail controller.
      */
     public SnailController() {
         snails = new ArrayList<Snail>();
@@ -60,14 +59,5 @@ public class SnailController implements ISubController {
     public void addNewEntity() {
         Snail newSnail = new Snail(Aquarium.WIDTH / 2, Aquarium.HEIGHT - 55);
         snails.add(newSnail);
-    }
-
-    /**
-     * Gets the number of snail.
-     *
-     * @return the number of snail
-     */
-    public int getNumberOfSnail() {
-        return snails.size();
     }
 }

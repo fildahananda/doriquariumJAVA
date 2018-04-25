@@ -40,56 +40,47 @@ public class GuiController extends JFrame implements ActionListener {
     /** The status panel. */
     private static JPanel statusPanel;
 
-    /** The add fish button. */
+    /** The buy fish button. */
     private JButton buyFishButton;
 
-    /** The pause button. */
+    /** The buy egg button. */
     private JButton buyEggButton;
 
-    private WinDialog winDialog;
+    /** The help button. */
+    private JButton controlButton;
 
+    /** The game control dialog. */
+    private GameControlDialog gameControlDialog;
 
     /** The game rule controller. */
-
     private GameRuleController gameRuleController;
 
-    private class WinDialog extends JDialog implements ActionListener {
-        public WinDialog(JFrame frame, String string, boolean b) {
+    private class GameControlDialog extends JDialog implements ActionListener {
+        public GameControlDialog(JFrame frame, String string, boolean b) {
             super(frame, string, b);
             setResizable(false);
             getContentPane().add(createRootPane());
             setVisible(false);
-            setLocation(this.getParent().getWidth() / 3, this.getParent().getHeight() / 5);
+            setLocation(this.getParent().getWidth() / 4, this.getParent().getHeight() / 5);
         }
 
         public void invoke() {
-            JPanel winPanel = new JPanel();
-            winPanel.setLayout(new BorderLayout());
-            winPanel.add(new JLabel("You Win!"), BorderLayout.CENTER);
+            JPanel initPanel = new JPanel();
+            initPanel.setLayout(new BorderLayout());
+            initPanel.add(new JLabel("Click on the screen to buy food"), BorderLayout.CENTER);
 
-            JButton finishButton = new JButton("Okay");
-            finishButton.addActionListener(winDialog);
-            winPanel.add(finishButton, BorderLayout.PAGE_END);
-            winDialog.getContentPane().add(winPanel);
-            winDialog.setSize(this.getParent().getWidth() / 2, this.getParent().getHeight() / 6);
-            winDialog.setVisible(true);
+            JButton finishButton = new JButton("Start");
+            finishButton.addActionListener(gameControlDialog);
+            initPanel.add(finishButton, BorderLayout.PAGE_END);
+            gameControlDialog.getContentPane().add(initPanel);
+            gameControlDialog.setSize(this.getParent().getWidth() / 2, this.getParent().getHeight() / 6);
+            gameControlDialog.setVisible(true);
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            calculateReturnMessage();
-            winDialog.setVisible(false);
+            gameControlDialog.setVisible(false);
         }
-
-        private void calculateReturnMessage() {
-
-        }
-
-        public List<Fish> getReturnMessage() {
-            return gameRuleController.getFishes();
-
-        }
-
     }
 
     /**
@@ -117,18 +108,20 @@ public class GuiController extends JFrame implements ActionListener {
         addButtonToControlPanel(buyFishButton, "Buy Fish");
         buyEggButton = new JButton("buy egg");
         addButtonToControlPanel(buyEggButton, "Buy Egg");
+        controlButton = new JButton("control");
+        addButtonToControlPanel(controlButton, "Help");
 
         statusPanel = new StatusPanelView();
 
-        winDialog = new WinDialog(this, "Win", true);
+        gameControlDialog= new GameControlDialog(this, "Control", true);
 
         setLayout(new BorderLayout());
         add(aquariumPanel, BorderLayout.CENTER);
         add(controlPanel, BorderLayout.PAGE_END);
         add(statusPanel, BorderLayout.PAGE_START);
-
-
+        
         setVisible(true);
+        gameControlDialog.invoke();
     }
 
     /**
@@ -163,6 +156,13 @@ public class GuiController extends JFrame implements ActionListener {
             gameRuleController.handleBuyEggCommand();
         } else if (e.getActionCommand() == "buy fish") {
             gameRuleController.handleBuyFishCommand();
+        } else if (e.getActionCommand() == "control") {
+            GameLoopController.togglePause();
+
+            gameControlDialog.invoke();
+            //gameRuleController.handleSellFishCommand(sellDialog.getReturnMessage());
+
+            GameLoopController.togglePause();
         }
     }
 }

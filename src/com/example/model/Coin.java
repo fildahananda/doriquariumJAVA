@@ -25,10 +25,20 @@ public class Coin extends Entity {
         this.coinValue = coinValue;
     }
 
+    /**
+     * Gets the coin value.
+     *
+     * @return the coin value.
+     */
     public int getCoinValue() {
         return coinValue;
     }
 
+    /**
+     * Sets the coin value.
+     *
+     * @param val the coin value
+     */
     public void setCoinValue(int val){
         this.coinValue = val;
     }

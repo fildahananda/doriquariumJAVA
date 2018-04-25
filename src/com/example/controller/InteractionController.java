@@ -23,7 +23,6 @@ public class InteractionController implements ISubController {
     private List<Snail> snails;
 
     /** The game rule controller. */
-
     private GameRuleController gameRuleController;
 
     /**

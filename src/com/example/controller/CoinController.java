@@ -2,7 +2,6 @@ package com.example.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import com.example.model.Aquarium;
 import com.example.model.Coin;
@@ -13,10 +12,10 @@ import com.example.model.Coin;
  */
 public class CoinController implements ISubController {
 
-    /** The coins. */
+    /** The list of coins. */
     private List<Coin> coins;
 
-    /** The to remove. */
+    /** The list of coins to remove. */
     private List<Coin> toRemove;
 
     /**
@@ -45,7 +44,7 @@ public class CoinController implements ISubController {
     public void perform() {
         removeObsoleteCoins();
         for (Coin coin : coins) {
-            if (!(coin.getPosition().getY() > Aquarium.HEIGHT + 50)) {
+            if (!(coin.getPosition().getY() > Aquarium.HEIGHT - 30)) {
                 coin.move();
             }
         }

@@ -15,6 +15,10 @@ import javax.swing.JPanel;
 
 import com.example.model.*;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class AquariumView.
+ */
 public class AquariumView extends JPanel {
     private List<Fish> fishes;
     private List<Food> foods;
@@ -34,6 +38,11 @@ public class AquariumView extends JPanel {
     private BufferedImage imgFish4 = null;
     private ArrayList<BufferedImage> bgImg = new ArrayList<BufferedImage>();
 
+    /**
+     * Initialize background image.
+     *
+     * @param bgImg the list of background images
+     */
     public void backgroundImageInit(ArrayList<BufferedImage> bgImg) {
         try {
             bgImg.add(ImageIO.read(new File("./res/img/background.jpg")));
@@ -44,6 +53,11 @@ public class AquariumView extends JPanel {
         }
     }
 
+    /**
+     * Draw background image.
+     *
+     * @param g the 2D graphics
+     */
     public void backgroundImageDraw(Graphics g) {
         Graphics2D tempG = (Graphics2D) g;
         tempG.drawImage(bgImg.get(0), 0, 5, null);
@@ -84,6 +98,14 @@ public class AquariumView extends JPanel {
         }
     }
 
+    /**
+     * Instantiates a new aquarium view.
+     *
+     * @param fishes the fish
+     * @param foods the food
+     * @param coins the coin
+     * @param snails the snail
+     */
     public AquariumView(List<Fish> fishes, List<Food> foods, List<Coin> coins, List<Snail> snails) {
         this.fishes = fishes;
         this.foods = foods;

@@ -17,7 +17,7 @@ public class FoodController implements ISubController {
     /** The foods. */
     private List<Food> foods;
 
-    /** The to remove. */
+    /** The list of foods to remove. */
     private List<Food> toRemove;
 
     /**

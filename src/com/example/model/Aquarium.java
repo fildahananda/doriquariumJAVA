@@ -14,7 +14,6 @@ public class Aquarium {
     /** The money. */
     public static int money = 1000;
 
+    /** The egg. */
     public static int egg = 0;
-
-    public static boolean win = false;
 }

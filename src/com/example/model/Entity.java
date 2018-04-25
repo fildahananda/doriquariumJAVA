@@ -9,22 +9,35 @@ public abstract class Entity {
     /** The Constant STANDARDDISTANCEPERSTEP. */
     protected final static int STANDARDDISTANCEPERSTEP = 10;
 
+    /** The position. */
     protected Point position;
 
+    /** The x location in real. */
     private float realX;
 
+    /** The y location in real. */
     private float realY;
 
+    /**
+     * Gets the position.
+     *
+     * @return the position.
+     */
     public Point getPosition(){
         return position;
     }
 
+    /**
+     * Sets the position.
+     *
+     * @param position the entity's position
+     */
     public void setPosition(Point position) {
         this.position = position;
     }
 
     /**
-     * Instantiates a new moving object.
+     * Instantiates a new entity.
      */
     public Entity() {
         this.position = new Point(0,0);
@@ -33,7 +46,7 @@ public abstract class Entity {
     }
 
     /**
-     * Instantiates a new moving object.
+     * Instantiates a new entity.
      *
      * @param x the x
      * @param y the y

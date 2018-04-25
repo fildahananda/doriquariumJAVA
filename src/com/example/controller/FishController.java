@@ -10,6 +10,7 @@ import com.example.model.Food;
 
 // TODO: Auto-generated Javadoc
 /**
+ * The Class Fish Controller
  * FishController class managing fishes outside its behavior.
  *
  */
@@ -18,7 +19,7 @@ public class FishController implements ISubController {
     /** The fishes. */
     private List<Fish> fishes;
 
-    /** The to remove. */
+    /** The list of fishes to remove. */
     private List<Fish> toRemove;
 
     /**
@@ -86,14 +87,5 @@ public class FishController implements ISubController {
         int randY = bound + random.nextInt(Aquarium.HEIGHT - (2 * bound));
         Fish newFish = new Fish(randX, randY);
         fishes.add(newFish);
-    }
-
-    /**
-     * Gets the number of fish.
-     *
-     * @return the number of fish
-     */
-    public int getNumberOfFish() {
-        return fishes.size();
     }
 }
