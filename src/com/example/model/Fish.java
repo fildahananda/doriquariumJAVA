@@ -40,25 +40,11 @@ public interface Fish {
     boolean isDeadByStarvation();
 
     /**
-     * Checks if is spawning coin.
-     *
-     * @return true, if is spawning coin
-     */
-    boolean isSpawningCoin();
-
-    /**
      * Increase hunger.
      *
      * @param distanceTaken the distance taken
      */
     void increaseHunger(double distanceTaken);
-
-    /**
-     * Increase spawning coin time.
-     *
-     * @param distanceTaken the distance taken
-     */
-    void increaseSpawningCoin(double distanceTaken);
 
     /**
      * Checks if is time to decide yet.
@@ -82,21 +68,9 @@ public interface Fish {
     int getHunger();
 
     /**
-     * Gets the coin value.
-     *
-     * @return the coin value
-     */
-    int getSpawnedCoinValue();
-
-    /**
      * Checks for eaten.
      */
     void hasEaten();
-
-    /**
-     * Checks for spawned coin.
-     */
-    void hasSpawnedCoin();
 
     public boolean isOnRemoval();
 }

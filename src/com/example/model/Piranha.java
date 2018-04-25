@@ -27,14 +27,8 @@ public class Piranha extends Entity implements Fish {
     /** The hunger. */
     private int hunger;
 
-    /** The spawning coin time. */
-    private int spawningCoin;
-
     private boolean removeFlag;
     private boolean facingRight;
-
-    /** The spawned coin value. */
-    private int spawnedCoinValue;
 
     /**
      * Instantiates a new fish.
@@ -53,9 +47,7 @@ public class Piranha extends Entity implements Fish {
         super(x, y);
         nextDecisionTimer = -1;
         hunger = 0;
-        spawningCoin = 0;
         removeFlag = false;
-        spawnedCoinValue = 400;
         facingRight = true;
     }
 
@@ -83,7 +75,6 @@ public class Piranha extends Entity implements Fish {
             }
         }
         increaseHunger(distancePerStep);
-        increaseSpawningCoin(distancePerStep);
         facingRight = currentTargetX - this.getPosition().getX() >= 0 ? true : false;
     }
 
@@ -126,30 +117,12 @@ public class Piranha extends Entity implements Fish {
     }
 
     /**
-     * Checks if is spawning coin.
-     *
-     * @return true, if is spawning coin
-     */
-    public boolean isSpawningCoin() {
-        return spawningCoin > 2000;
-    }
-
-    /**
      * Increase hunger.
      *
      * @param distanceTaken the distance taken
      */
     public void increaseHunger(double distanceTaken) {
         this.hunger += distancePerStep;
-    }
-
-    /**
-     * Increase spawning coin time.
-     *
-     * @param distanceTaken the distance taken
-     */
-    public void increaseSpawningCoin(double distanceTaken) {
-        this.spawningCoin += distancePerStep;
     }
 
     /**
@@ -183,15 +156,6 @@ public class Piranha extends Entity implements Fish {
     }
 
     /**
-     * Gets the coin value.
-     *
-     * @return the coin value
-     */
-    public int getSpawnedCoinValue() {
-        return spawnedCoinValue;
-    }
-
-    /**
      * Sets the target guppy.
      *
      * @param targetGuppy the new target guppy
@@ -207,20 +171,7 @@ public class Piranha extends Entity implements Fish {
         this.hunger = 0;
     }
 
-    /**
-     * Checks for spawned coin.
-     */
-    public void hasSpawnedCoin() {
-        this.spawningCoin = 0;
-    }
-
-    public boolean isOnRemoval() {
-        return removeFlag;
-    }
-
-    public void hasBeenSold() {
-        removeFlag = true;
-    }
+    public boolean isOnRemoval() { return removeFlag; }
 
     /**
      * Checks direction fish is facing.

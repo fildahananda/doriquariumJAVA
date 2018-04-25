@@ -231,10 +231,6 @@ public class Guppy extends Entity implements Fish {
         return removeFlag;
     }
 
-    public void hasBeenSold() {
-        removeFlag = true;
-    }
-
     public void hasBeenEaten() { removeFlag = true; }
 
     public int value() {
