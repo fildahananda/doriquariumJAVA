@@ -98,6 +98,15 @@ public class Snail extends Entity {
     }
 
     /**
+     * Gets the target coin.
+     *
+     * @return the target coin
+     */
+    public Coin getTargetCoin() {
+        return this.targetCoin;
+    }
+
+    /**
      * Checks direction snail is facing.
      *
      * @return facingRight the snail facing
