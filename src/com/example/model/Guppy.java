@@ -3,12 +3,11 @@ package com.example.model;
 import java.util.Random;
 
 // TODO: Auto-generated Javadoc
-
 /**
- * The Class Piranha.
+ * The Class Guppy.
  */
+public class Guppy extends Entity implements Fish {
 
-public class Piranha extends Entity implements Fish {
     /** The distance per step. */
     private int distancePerStep = 2;
 
@@ -21,8 +20,8 @@ public class Piranha extends Entity implements Fish {
     /** The current target Y. */
     private int currentTargetY;
 
-    /** The target guppy. */
-    private Guppy targetGuppy;
+    /** The target food. */
+    private Food targetFood;
 
     /** The hunger. */
     private int hunger;
@@ -30,6 +29,8 @@ public class Piranha extends Entity implements Fish {
     /** The spawning coin time. */
     private int spawningCoin;
 
+    /** The growth. */
+    private int state;
     private boolean removeFlag;
     private boolean facingRight;
 
@@ -39,7 +40,7 @@ public class Piranha extends Entity implements Fish {
     /**
      * Instantiates a new fish.
      */
-    public Piranha() {
+    public Guppy() {
         this(0, 0);
     }
 
@@ -49,13 +50,14 @@ public class Piranha extends Entity implements Fish {
      * @param x the x
      * @param y the y
      */
-    public Piranha(int x, int y) {
+    public Guppy(int x, int y) {
         super(x, y);
         nextDecisionTimer = -1;
         hunger = 0;
         spawningCoin = 0;
+        state = 1;
         removeFlag = false;
-        spawnedCoinValue = 400;
+        spawnedCoinValue = 100;
         facingRight = true;
     }
 
@@ -65,8 +67,8 @@ public class Piranha extends Entity implements Fish {
      * @see models.MovingObject#move()
      */
     public void move() {
-        if (isHungry() && targetGuppy != null) {
-            setTarget(targetGuppy);
+        if (isHungry() && targetFood != null) {
+            setTarget(targetFood);
             moveDirection(distancePerStep,
                     (float) Math.atan2(currentTargetY - this.getPosition().getY(), currentTargetX - this.getPosition().getX()));
             distancePerStep *= 1.001;
@@ -112,7 +114,7 @@ public class Piranha extends Entity implements Fish {
      * @return true, if is hungry
      */
     public boolean isHungry() {
-        return hunger > 2500;
+        return hunger > 500;
     }
 
     /**
@@ -121,7 +123,7 @@ public class Piranha extends Entity implements Fish {
      * @return true, if is dead by starvation
      */
     public boolean isDeadByStarvation() {
-        return hunger > 3000;
+        return hunger > 2000;
     }
 
     /**
@@ -130,7 +132,7 @@ public class Piranha extends Entity implements Fish {
      * @return true, if is spawning coin
      */
     public boolean isSpawningCoin() {
-        return spawningCoin > 2000;
+        return spawningCoin > 1250;
     }
 
     /**
@@ -182,6 +184,15 @@ public class Piranha extends Entity implements Fish {
     }
 
     /**
+     * Gets the growth.
+     *
+     * @return the growth
+     */
+    public int getState() {
+        return state;
+    }
+
+    /**
      * Gets the coin value.
      *
      * @return the coin value
@@ -191,12 +202,12 @@ public class Piranha extends Entity implements Fish {
     }
 
     /**
-     * Sets the target guppy.
+     * Sets the target food.
      *
-     * @param targetGuppy the new target guppy
+     * @param targetFood the new target food
      */
-    public void setTargetGuppy(Guppy targetGuppy) {
-        this.targetGuppy = targetGuppy;
+    public void setTargetFood(Food targetFood) {
+        this.targetFood = targetFood;
     }
 
     /**
@@ -204,6 +215,7 @@ public class Piranha extends Entity implements Fish {
      */
     public void hasEaten() {
         this.hunger = 0;
+        this.state += 1;
     }
 
     /**
@@ -219,6 +231,10 @@ public class Piranha extends Entity implements Fish {
 
     public void hasBeenSold() {
         removeFlag = true;
+    }
+
+    public int value() {
+        return state * 20;
     }
 }
 

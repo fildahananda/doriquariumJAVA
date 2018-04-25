@@ -1,13 +1,11 @@
 package com.example.view;
 
 import java.awt.Graphics;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.example.model.Aquarium;
-import com.example.model.Fish;
 
 // TODO: Auto-generated Javadoc
 /**

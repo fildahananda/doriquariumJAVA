@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -15,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.example.model.Aquarium;
-import com.example.model.Fish;
 import com.example.view.AquariumView;
 import com.example.view.StatusPanelView;
 
@@ -105,7 +103,7 @@ public class GuiController extends JFrame implements ActionListener {
 
         controlPanel = new JPanel();
         buyFishButton = new JButton("buy fish");
-        addButtonToControlPanel(buyFishButton, "Buy Fish");
+        addButtonToControlPanel(buyFishButton, "Buy Guppy");
         buyEggButton = new JButton("buy egg");
         addButtonToControlPanel(buyEggButton, "Buy Egg");
         controlButton = new JButton("control");

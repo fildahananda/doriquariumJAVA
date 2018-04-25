@@ -20,7 +20,7 @@ import com.example.model.*;
  * The Class AquariumView.
  */
 public class AquariumView extends JPanel {
-    private List<Fish> fishes;
+    private List<Guppy> guppies;
     private List<Food> foods;
     private List<Coin> coins;
     private List<Snail> snails;
@@ -80,15 +80,15 @@ public class AquariumView extends JPanel {
                     imgSnail = imgSnail_left;
                 arrayG.get(i).drawImage(imgSnail, snails.get(i).getPosition().getX(), snails.get(i).getPosition().getY(), null);
             }
-            for (int i = 0; i < fishes.size(); i++) {
+            for (int i = 0; i < guppies.size(); i++) {
                 arrayG.add((Graphics2D) g);
-                if (fishes.get(i).getState() == 1)
+                if (guppies.get(i).getState() == 1)
                     imgFish = imgFish1;
-                else if (fishes.get(i).getState() == 2)
+                else if (guppies.get(i).getState() == 2)
                     imgFish = imgFish2;
                 else
                     imgFish = imgFish3;
-                arrayG.get(i).drawImage(imgFish, fishes.get(i).getPosition().getX(), fishes.get(i).getPosition().getY(), null);
+                arrayG.get(i).drawImage(imgFish, guppies.get(i).getPosition().getX(), guppies.get(i).getPosition().getY(), null);
             }
 
         }else if(Aquarium.egg>=3){
@@ -101,13 +101,13 @@ public class AquariumView extends JPanel {
     /**
      * Instantiates a new aquarium view.
      *
-     * @param fishes the fish
+     * @param guppies the fish
      * @param foods the food
      * @param coins the coin
      * @param snails the snail
      */
-    public AquariumView(List<Fish> fishes, List<Food> foods, List<Coin> coins, List<Snail> snails) {
-        this.fishes = fishes;
+    public AquariumView(List<Guppy> guppies, List<Food> foods, List<Coin> coins, List<Snail> snails) {
+        this.guppies = guppies;
         this.foods = foods;
         this.coins = coins;
         this.snails = snails;
