@@ -76,14 +76,10 @@ public class InteractionController implements ISubController {
                 boolean eatingStatus = (Entity.calcDistBetween(piranha, guppy) < 10);
                 if (eatingStatus && piranha.isHungry()) {
                     piranha.hasEaten();
+                    gameRuleController.handleAddCoinCommand(piranha.getPosition().getX(), piranha.getPosition().getY(), 200 * (guppy.getState() + 1));
                     guppy.hasBeenEaten();
                     break;
                 }
-            }
-            boolean isSpawningCoin = piranha.isSpawningCoin();
-            if (isSpawningCoin) {
-                gameRuleController.handleAddCoinCommand(piranha.getPosition().getX(), piranha.getPosition().getY(), piranha.getSpawnedCoinValue());
-                piranha.hasSpawnedCoin();
             }
         }
 

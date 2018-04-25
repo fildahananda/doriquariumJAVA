@@ -17,5 +17,6 @@ public class GuppyTest {
         guppy.hasEaten();
         guppy.hasEaten();
         assertEquals("Guppy's state TEST FAIL",3, guppy.getState());
+        assertTrue("Guppy's facing TEST FAIL",guppy.isFacingRight());
     }
 }
