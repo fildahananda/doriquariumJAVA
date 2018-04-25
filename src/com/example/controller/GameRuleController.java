@@ -1,8 +1,8 @@
 package com.example.controller;
 
-import java.util.List;
-
 import com.example.model.*;
+
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -86,6 +86,8 @@ public class GameRuleController implements ISubController {
 
     /**
      * Handle buy food command.
+     * @param xPos the x
+     * @param yPos the y
      */
     public void handleAddFoodCommand(int xPos, int yPos) {
         if (Aquarium.money >= FOODPRICE) {
@@ -96,6 +98,10 @@ public class GameRuleController implements ISubController {
 
     /**
      * Handle add coin command.
+     *
+     * @param xPos the x
+     * @param yPos the y
+     * @param spawnedCoinValue the value of coin spawned
      */
     public void handleAddCoinCommand(int xPos, int yPos, int spawnedCoinValue) {
         coinController.addNewEntity(xPos, yPos, spawnedCoinValue);
