@@ -216,7 +216,8 @@ public class Guppy extends Entity implements Fish {
      */
     public void hasEaten() {
         this.hunger = 0;
-        this.state += 1;
+        if(this.state<3)
+            this.state += 1;
     }
 
     /**
