@@ -1,10 +1,10 @@
 package com.example.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.example.model.Aquarium;
 import com.example.model.Coin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -69,6 +69,10 @@ public class CoinController implements ISubController {
 
     /**
      * Adds the new entity.
+     *
+     * @param xPos the x
+     * @param yPos the y
+     * @param coinValue the value of the coin
      */
     public void addNewEntity(int xPos, int yPos, int coinValue) {
         Coin newCoin = new Coin(xPos, yPos, coinValue);

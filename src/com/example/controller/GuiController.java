@@ -1,21 +1,16 @@
 package com.example.controller;
 
 // TODO remove this ugliness
-import java.awt.BorderLayout;
+import com.example.model.Aquarium;
+import com.example.view.AquariumView;
+import com.example.view.StatusPanelView;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import com.example.model.Aquarium;
-import com.example.view.AquariumView;
-import com.example.view.StatusPanelView;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -165,7 +160,6 @@ public class GuiController extends JFrame implements ActionListener {
             GameLoopController.togglePause();
 
             gameControlDialog.invoke();
-            //gameRuleController.handleSellFishCommand(sellDialog.getReturnMessage());
 
             GameLoopController.togglePause();
         }

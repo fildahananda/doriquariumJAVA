@@ -1,10 +1,10 @@
 package com.example.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.example.model.Aquarium;
 import com.example.model.Food;
+
+import java.util.ArrayList;
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -71,6 +71,9 @@ public class FoodController implements ISubController {
 
     /**
      * Adds the new entity.
+     *
+     * @param xPos the x
+     * @param yPos the y
      */
     public void addNewEntity(int xPos, int yPos) {
         Food newFood = new Food(xPos, yPos);

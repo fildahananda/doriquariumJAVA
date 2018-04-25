@@ -36,6 +36,7 @@ public class InteractionController implements ISubController {
      * @param coinController the coin controller
      * @param snailController the snail controller
      * @param piranhaController the piranha controller
+     * @param gameRuleController the game rule controller
      */
     public InteractionController(GuppyController guppyController, PiranhaController piranhaController, FoodController foodController, CoinController coinController, SnailController snailController, GameRuleController gameRuleController) {
         guppies = guppyController.getGuppies();
