@@ -38,8 +38,11 @@ public class GuiController extends JFrame implements ActionListener {
     /** The status panel. */
     private static JPanel statusPanel;
 
-    /** The buy fish button. */
-    private JButton buyFishButton;
+    /** The buy guppy button. */
+    private JButton buyGuppyButton;
+
+    /** The buy piranha button. */
+    private JButton buyPiranhaButton;
 
     /** The buy egg button. */
     private JButton buyEggButton;
@@ -94,7 +97,7 @@ public class GuiController extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.gameRuleController = gameRuleController;
-        aquariumPanel = new AquariumView(gameRuleController.getFishes(), gameRuleController.getFoods(), gameRuleController.getCoins(), gameRuleController.getSnails());
+        aquariumPanel = new AquariumView(gameRuleController.getGuppies(), gameRuleController.getPiranhas(), gameRuleController.getFoods(), gameRuleController.getCoins(), gameRuleController.getSnails());
         aquariumPanel.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 gameRuleController.handleAddFoodCommand(e.getX(), e.getY());
@@ -102,8 +105,10 @@ public class GuiController extends JFrame implements ActionListener {
         });
 
         controlPanel = new JPanel();
-        buyFishButton = new JButton("buy fish");
-        addButtonToControlPanel(buyFishButton, "Buy Guppy");
+        buyGuppyButton = new JButton("buy fish");
+        addButtonToControlPanel(buyGuppyButton, "Buy Guppy");
+        buyPiranhaButton = new JButton("buy piranha");
+        addButtonToControlPanel(buyPiranhaButton, "Buy Piranha");
         buyEggButton = new JButton("buy egg");
         addButtonToControlPanel(buyEggButton, "Buy Egg");
         controlButton = new JButton("control");
@@ -153,7 +158,9 @@ public class GuiController extends JFrame implements ActionListener {
         if (e.getActionCommand() == "buy egg") {
             gameRuleController.handleBuyEggCommand();
         } else if (e.getActionCommand() == "buy fish") {
-            gameRuleController.handleBuyFishCommand();
+            gameRuleController.handleBuyGuppyCommand();
+        } else if (e.getActionCommand() == "buy piranha") {
+            gameRuleController.handleBuyPiranhaCommand();
         } else if (e.getActionCommand() == "control") {
             GameLoopController.togglePause();
 

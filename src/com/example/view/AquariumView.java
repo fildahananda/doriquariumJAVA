@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class AquariumView extends JPanel {
     private List<Guppy> guppies;
+    private List<Piranha> piranhas;
     private List<Food> foods;
     private List<Coin> coins;
     private List<Snail> snails;
@@ -96,6 +97,10 @@ public class AquariumView extends JPanel {
                     imgFish = imgFish3_R;
                 arrayG.get(i).drawImage(imgFish, guppies.get(i).getPosition().getX(), guppies.get(i).getPosition().getY(), null);
             }
+            for (int i = 0; i < piranhas.size(); i++) {
+                arrayG.add((Graphics2D) g);
+                arrayG.get(i).drawImage(imgFish4, piranhas.get(i).getPosition().getX(), piranhas.get(i).getPosition().getY(), null);
+            }
 
         }else if(Aquarium.egg>=3){
             tempG.drawImage(bgImg.get(1), 70, 100, null);
@@ -106,14 +111,15 @@ public class AquariumView extends JPanel {
 
     /**
      * Instantiates a new aquarium view.
-     *
-     * @param guppies the fish
+     * @param guppies the guppy
+     * @param piranhas the piranha
      * @param foods the food
      * @param coins the coin
      * @param snails the snail
      */
-    public AquariumView(List<Guppy> guppies, List<Food> foods, List<Coin> coins, List<Snail> snails) {
+    public AquariumView(List<Guppy> guppies, List<Piranha> piranhas, List<Food> foods, List<Coin> coins, List<Snail> snails) {
         this.guppies = guppies;
+        this.piranhas = piranhas;
         this.foods = foods;
         this.coins = coins;
         this.snails = snails;

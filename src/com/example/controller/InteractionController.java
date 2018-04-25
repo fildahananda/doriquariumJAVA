@@ -13,6 +13,9 @@ public class InteractionController implements ISubController {
     /** The guppies. */
     private List<Guppy> guppies;
 
+    /** The piranhas. */
+    private List<Piranha> piranhas;
+
     /** The foods. */
     private List<Food> foods;
 
@@ -32,9 +35,11 @@ public class InteractionController implements ISubController {
      * @param foodController the food controller
      * @param coinController the coin controller
      * @param snailController the snail controller
+     * @param piranhaController the piranha controller
      */
-    public InteractionController(GuppyController guppyController, FoodController foodController, CoinController coinController, SnailController snailController, GameRuleController gameRuleController) {
+    public InteractionController(GuppyController guppyController, PiranhaController piranhaController, FoodController foodController, CoinController coinController, SnailController snailController, GameRuleController gameRuleController) {
         guppies = guppyController.getGuppies();
+        piranhas = piranhaController.getPiranhas();
         foods = foodController.getFoods();
         coins = coinController.getCoins();
         snails = snailController.getSnails();
@@ -62,6 +67,23 @@ public class InteractionController implements ISubController {
             if (isSpawningCoin) {
                 gameRuleController.handleAddCoinCommand(guppy.getPosition().getX(), guppy.getPosition().getY(), guppy.getSpawnedCoinValue());
                 guppy.hasSpawnedCoin();
+            }
+        }
+
+        for (Piranha piranha : piranhas) {
+            piranha.setTargetGuppy(GetClosestFoodFrom(piranha));
+            for (Guppy guppy : guppies) {
+                boolean eatingStatus = (Entity.calcDistBetween(piranha, guppy) < 10);
+                if (eatingStatus && piranha.isHungry()) {
+                    piranha.hasEaten();
+                    guppy.hasBeenEaten();
+                    break;
+                }
+            }
+            boolean isSpawningCoin = piranha.isSpawningCoin();
+            if (isSpawningCoin) {
+                gameRuleController.handleAddCoinCommand(piranha.getPosition().getX(), piranha.getPosition().getY(), piranha.getSpawnedCoinValue());
+                piranha.hasSpawnedCoin();
             }
         }
 
@@ -98,6 +120,28 @@ public class InteractionController implements ISubController {
             }
         }
         return closestFood;
+    }
+
+    /**
+     * Gets the closest guppy from.
+     *
+     * @param piranha the piranha
+     * @return the guppy
+     */
+    private Guppy GetClosestFoodFrom(Piranha piranha) {
+        if (guppies.isEmpty()) {
+            return null;
+        }
+        Guppy closestGuppy = null;
+        for (Guppy checkingGuppy : guppies) {
+            if (closestGuppy == null) {
+                closestGuppy = checkingGuppy;
+            } else if (Entity.calcDistBetween(closestGuppy, piranha) > Entity
+                    .calcDistBetween(checkingGuppy, piranha)) {
+                closestGuppy = checkingGuppy;
+            }
+        }
+        return closestGuppy;
     }
 
     /**

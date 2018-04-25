@@ -13,9 +13,13 @@ import javax.swing.SwingUtilities;
  */
 public class MainController {
 
-    /** The fish controller. */
+    /** The guppy controller. */
     // controller to control
     private static GuppyController guppyController;
+
+    /** The piranha controller. */
+    // controller to control
+    private static PiranhaController piranhaController;
 
     /** The food controller. */
     private static FoodController foodController;
@@ -50,12 +54,14 @@ public class MainController {
     private void initializeControllers() {
         guppyController = new GuppyController();
         guppyController.addNewEntity();
+        piranhaController = new PiranhaController();
+        piranhaController.addNewEntity();
         foodController = new FoodController();
         coinController = new CoinController();
         snailController = new SnailController();
         snailController.addNewEntity();
-        gameRuleController = new GameRuleController(guppyController, foodController, coinController, snailController);
-        interactionController = new InteractionController(guppyController, foodController, coinController, snailController, gameRuleController);
+        gameRuleController = new GameRuleController(guppyController, piranhaController, foodController, coinController, snailController);
+        interactionController = new InteractionController(guppyController, piranhaController, foodController, coinController, snailController, gameRuleController);
     }
 
     /**
@@ -76,6 +82,7 @@ public class MainController {
     private void runGameLoop() {
         List<ISubController> subControllers = new ArrayList<ISubController>();
         subControllers.add(guppyController);
+        subControllers.add(piranhaController);
         subControllers.add(foodController);
         subControllers.add(coinController);
         subControllers.add(snailController);
