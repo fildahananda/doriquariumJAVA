@@ -5,38 +5,37 @@ import java.util.List;
 import java.util.Random;
 
 import com.example.model.Aquarium;
-import com.example.model.Fish;
-import com.example.model.Food;
+import com.example.model.Guppy;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Fish Controller
- * FishController class managing fishes outside its behavior.
+ * The Class Guppy Controller
+ * GuppyController class managing guppies outside its behavior.
  *
  */
-public class FishController implements ISubController {
+public class GuppyController implements ISubController {
 
-    /** The fishes. */
-    private List<Fish> fishes;
+    /** The guppies. */
+    private List<Guppy> guppies;
 
-    /** The list of fishes to remove. */
-    private List<Fish> toRemove;
+    /** The list of guppies to remove. */
+    private List<Guppy> toRemove;
 
     /**
      * Instantiates a new fish controller.
      */
-    public FishController() {
-        fishes = new ArrayList<Fish>();
-        toRemove = new ArrayList<Fish>();
+    public GuppyController() {
+        guppies = new ArrayList<Guppy>();
+        toRemove = new ArrayList<Guppy>();
     }
 
     /**
-     * Gets the fishes.
+     * Gets the guppies.
      *
-     * @return the fishes
+     * @return the guppies
      */
-    public List<Fish> getFishes() {
-        return fishes;
+    public List<Guppy> getGuppies() {
+        return guppies;
     }
 
     /*
@@ -51,27 +50,27 @@ public class FishController implements ISubController {
     @Override
     public void perform() {
         removeObsoleteFishes();
-        for (Fish fish : fishes) {
-            if (!fish.isDeadByStarvation()) {
-                fish.move();
+        for (Guppy guppy : guppies) {
+            if (!guppy.isDeadByStarvation()) {
+                guppy.move();
             } else {
-                toRemove.add(fish);
+                toRemove.add(guppy);
             }
         }
     }
 
     /**
-     * Removes the obsolete fishes.
+     * Removes the obsolete guppies.
      */
     private void removeObsoleteFishes() {
-        for (Fish fish : fishes) {
-            if (fish.isOnRemoval()) {
-                toRemove.add(fish);
+        for (Guppy guppy : guppies) {
+            if (guppy.isOnRemoval()) {
+                toRemove.add(guppy);
             }
         }
         if (!toRemove.isEmpty()) {
-            for (Fish fish : toRemove) {
-                fishes.remove(fish);
+            for (Guppy guppy : toRemove) {
+                guppies.remove(guppy);
             }
         }
         toRemove.clear();
@@ -85,7 +84,7 @@ public class FishController implements ISubController {
         int bound = Aquarium.WIDTH / 10;
         int randX = bound + random.nextInt(Aquarium.WIDTH - (2 * bound));
         int randY = bound + random.nextInt(Aquarium.HEIGHT - (2 * bound));
-        Fish newFish = new Fish(randX, randY);
-        fishes.add(newFish);
+        Guppy newGuppy = new Guppy(randX, randY);
+        guppies.add(newGuppy);
     }
 }

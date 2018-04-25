@@ -4,9 +4,9 @@ import java.util.Random;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Fish.
+ * The Class Guppy.
  */
-public class Fish extends Entity {
+public class Guppy extends Entity {
 
     /** The distance per step. */
     private int distancePerStep = 2;
@@ -40,7 +40,7 @@ public class Fish extends Entity {
     /**
      * Instantiates a new fish.
      */
-    public Fish() {
+    public Guppy() {
         this(0, 0);
     }
 
@@ -50,7 +50,7 @@ public class Fish extends Entity {
      * @param x the x
      * @param y the y
      */
-    public Fish(int x, int y) {
+    public Guppy(int x, int y) {
         super(x, y);
         nextDecisionTimer = -1;
         hunger = 0;

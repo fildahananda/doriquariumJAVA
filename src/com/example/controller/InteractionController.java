@@ -10,8 +10,8 @@ import com.example.model.*;
  */
 public class InteractionController implements ISubController {
 
-    /** The fishes. */
-    private List<Fish> fishes;
+    /** The guppies. */
+    private List<Guppy> guppies;
 
     /** The foods. */
     private List<Food> foods;
@@ -28,13 +28,13 @@ public class InteractionController implements ISubController {
     /**
      * Instantiates a new interaction controller.
      *
-     * @param fishController the fish controller
+     * @param guppyController the fish controller
      * @param foodController the food controller
      * @param coinController the coin controller
      * @param snailController the snail controller
      */
-    public InteractionController(FishController fishController, FoodController foodController, CoinController coinController, SnailController snailController, GameRuleController gameRuleController) {
-        fishes = fishController.getFishes();
+    public InteractionController(GuppyController guppyController, FoodController foodController, CoinController coinController, SnailController snailController, GameRuleController gameRuleController) {
+        guppies = guppyController.getGuppies();
         foods = foodController.getFoods();
         coins = coinController.getCoins();
         snails = snailController.getSnails();
@@ -48,20 +48,20 @@ public class InteractionController implements ISubController {
      */
     @Override
     public void perform() {
-        for (Fish fish : fishes) {
-            fish.setTargetFood(GetClosestFoodFrom(fish));
+        for (Guppy guppy : guppies) {
+            guppy.setTargetFood(GetClosestFoodFrom(guppy));
             for (Food food : foods) {
-                boolean eatingStatus = (Entity.calcDistBetween(fish, food) < 10);
-                if (eatingStatus && fish.isHungry()) {
-                    fish.hasEaten();
+                boolean eatingStatus = (Entity.calcDistBetween(guppy, food) < 10);
+                if (eatingStatus && guppy.isHungry()) {
+                    guppy.hasEaten();
                     food.hasBeenEaten();
                     break;
                 }
             }
-            boolean isSpawningCoin = fish.isSpawningCoin();
+            boolean isSpawningCoin = guppy.isSpawningCoin();
             if (isSpawningCoin) {
-                gameRuleController.handleAddCoinCommand(fish.getPosition().getX(), fish.getPosition().getY(), fish.getSpawnedCoinValue());
-                fish.hasSpawnedCoin();
+                gameRuleController.handleAddCoinCommand(guppy.getPosition().getX(), guppy.getPosition().getY(), guppy.getSpawnedCoinValue());
+                guppy.hasSpawnedCoin();
             }
         }
 
@@ -81,10 +81,10 @@ public class InteractionController implements ISubController {
     /**
      * Gets the closest food from.
      *
-     * @param fish the fish
+     * @param guppy the guppy
      * @return the food
      */
-    private Food GetClosestFoodFrom(Fish fish) {
+    private Food GetClosestFoodFrom(Guppy guppy) {
         if (foods.isEmpty()) {
             return null;
         }
@@ -92,8 +92,8 @@ public class InteractionController implements ISubController {
         for (Food checkingFood : foods) {
             if (closestFood == null) {
                 closestFood = checkingFood;
-            } else if (Entity.calcDistBetween(closestFood, fish) > Entity
-                    .calcDistBetween(checkingFood, fish)) {
+            } else if (Entity.calcDistBetween(closestFood, guppy) > Entity
+                    .calcDistBetween(checkingFood, guppy)) {
                 closestFood = checkingFood;
             }
         }

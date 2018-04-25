@@ -20,7 +20,7 @@ public class GameRuleController implements ISubController {
     private static final int EGGPRICE = 1000;
 
     /** The fish controller. */
-    FishController fishController;
+    GuppyController guppyController;
 
     /** The food controller. */
     FoodController foodController;
@@ -34,13 +34,13 @@ public class GameRuleController implements ISubController {
     /**
      * Instantiates a new game rule controller.
      *
-     * @param fishController the fish controller
+     * @param guppyController the fish controller
      * @param foodController the food controller
      * @param coinController the coin controller
      * @param snailController the snail controller
      */
-    public GameRuleController(FishController fishController, FoodController foodController, CoinController coinController, SnailController snailController) {
-        this.fishController = fishController;
+    public GameRuleController(GuppyController guppyController, FoodController foodController, CoinController coinController, SnailController snailController) {
+        this.guppyController = guppyController;
         this.foodController = foodController;
         this.coinController = coinController;
         this.snailController = snailController;
@@ -61,7 +61,7 @@ public class GameRuleController implements ISubController {
      */
     public void handleBuyFishCommand() {
         if (Aquarium.money >= FISHPRICE) {
-            fishController.addNewEntity();
+            guppyController.addNewEntity();
             Aquarium.money -= FISHPRICE;
         }
     }
@@ -99,8 +99,8 @@ public class GameRuleController implements ISubController {
      * @return the fishes
      */
     // TODO these below, along with the whole design of GuiController seems like a bad choice
-    public List<Fish> getFishes() {
-        return fishController.getFishes();
+    public List<Guppy> getFishes() {
+        return guppyController.getGuppies();
     }
 
     /**
