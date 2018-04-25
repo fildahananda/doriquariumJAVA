@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * The Class Guppy.
  */
-public class Guppy extends Entity {
+public class Guppy extends Entity implements Fish {
 
     /** The distance per step. */
     private int distancePerStep = 2;
@@ -93,7 +93,7 @@ public class Guppy extends Entity {
      *
      * @param mo the new target
      */
-    private void setTarget(Entity mo) {
+    public void setTarget(Entity mo) {
         setTarget(mo.getPosition().getX(), mo.getPosition().getY());
     }
 
@@ -103,7 +103,7 @@ public class Guppy extends Entity {
      * @param x the x
      * @param y the y
      */
-    private void setTarget(int x, int y) {
+    public void setTarget(int x, int y) {
         this.currentTargetX = x;
         this.currentTargetY = y;
     }
@@ -123,7 +123,7 @@ public class Guppy extends Entity {
      * @return true, if is dead by starvation
      */
     public boolean isDeadByStarvation() {
-        return hunger > 1000;
+        return hunger > 2000;
     }
 
     /**
@@ -140,7 +140,7 @@ public class Guppy extends Entity {
      *
      * @param distanceTaken the distance taken
      */
-    private void increaseHunger(double distanceTaken) {
+    public void increaseHunger(double distanceTaken) {
         this.hunger += distancePerStep;
     }
 
@@ -149,7 +149,7 @@ public class Guppy extends Entity {
      *
      * @param distanceTaken the distance taken
      */
-    private void increaseSpawningCoin(double distanceTaken) {
+    public void increaseSpawningCoin(double distanceTaken) {
         this.spawningCoin += distancePerStep;
     }
 
@@ -158,7 +158,7 @@ public class Guppy extends Entity {
      *
      * @return true, if is time to decide yet
      */
-    private boolean isTimeToDecideYet() {
+    public boolean isTimeToDecideYet() {
         return (nextDecisionTimer < 0 || isNearTargetYet());
     }
 
@@ -167,7 +167,7 @@ public class Guppy extends Entity {
      *
      * @return true, if is near target yet
      */
-    private boolean isNearTargetYet() {
+    public boolean isNearTargetYet() {
         int dx = Math.abs(currentTargetX - this.getPosition().getX());
         int dy = Math.abs(currentTargetY - this.getPosition().getY());
         return (dx < 10 && dy < 10);
