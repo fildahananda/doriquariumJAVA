@@ -1,7 +1,5 @@
 package com.example.model;
 
-import java.util.Random;
-
 // TODO: Auto-generated Javadoc
 /**
  * The Class Snail.
@@ -101,6 +99,8 @@ public class Snail extends Entity {
 
     /**
      * Checks direction snail is facing.
+     *
+     * @return facingRight the snail facing
      */
     public boolean isFacingRight() { return facingRight; }
 

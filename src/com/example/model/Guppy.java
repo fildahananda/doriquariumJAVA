@@ -86,6 +86,7 @@ public class Guppy extends Entity implements Fish {
         }
         increaseHunger(distancePerStep);
         increaseSpawningCoin(distancePerStep);
+        facingRight = currentTargetX - this.getPosition().getX() >= 0 ? true : false;
     }
 
     /**
@@ -236,5 +237,12 @@ public class Guppy extends Entity implements Fish {
     public int value() {
         return state * 20;
     }
+
+    /**
+     * Checks direction fish is facing.
+     *
+     * @return facingRight the fish facing
+     */
+    public boolean isFacingRight() { return facingRight; }
 }
 

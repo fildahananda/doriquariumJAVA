@@ -1,19 +1,15 @@
 package com.example.view;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.util.List;
-
-import java.awt.Graphics2D;
-import java.awt.image.*;
-import java.util.ArrayList;
-import java.io.*;
-import javax.imageio.*;
-
-import javax.swing.JPanel;
-
 import com.example.model.*;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -33,9 +29,13 @@ public class AquariumView extends JPanel {
     private BufferedImage imgSnail_right = null;
     private BufferedImage imgFish = null;
     private BufferedImage imgFish1 = null;
+    private BufferedImage imgFish1_R = null;
     private BufferedImage imgFish2 = null;
+    private BufferedImage imgFish2_R = null;
     private BufferedImage imgFish3 = null;
+    private BufferedImage imgFish3_R = null;
     private BufferedImage imgFish4 = null;
+    private BufferedImage imgFish4_R = null;
     private ArrayList<BufferedImage> bgImg = new ArrayList<BufferedImage>();
 
     /**
@@ -82,12 +82,18 @@ public class AquariumView extends JPanel {
             }
             for (int i = 0; i < guppies.size(); i++) {
                 arrayG.add((Graphics2D) g);
-                if (guppies.get(i).getState() == 1)
+                if ((guppies.get(i).getState() == 1)&&(guppies.get(i).isFacingRight()))
                     imgFish = imgFish1;
-                else if (guppies.get(i).getState() == 2)
+                else if ((guppies.get(i).getState() == 1)&&(!guppies.get(i).isFacingRight()))
+                    imgFish = imgFish1_R;
+                else if ((guppies.get(i).getState() == 2)&&(guppies.get(i).isFacingRight()))
                     imgFish = imgFish2;
-                else
+                else if ((guppies.get(i).getState() == 2)&&(!guppies.get(i).isFacingRight()))
+                    imgFish = imgFish2_R;
+                else if ((guppies.get(i).getState() == 3)&&(guppies.get(i).isFacingRight()))
                     imgFish = imgFish3;
+                else if ((guppies.get(i).getState() == 3)&&(!guppies.get(i).isFacingRight()))
+                    imgFish = imgFish3_R;
                 arrayG.get(i).drawImage(imgFish, guppies.get(i).getPosition().getX(), guppies.get(i).getPosition().getY(), null);
             }
 
@@ -121,6 +127,10 @@ public class AquariumView extends JPanel {
             imgFish2 = ImageIO.read(new File("./res/img/guppy_2.png"));
             imgFish3 = ImageIO.read(new File("./res/img/guppy_3.png"));
             imgFish4 = ImageIO.read(new File("./res/img/piranha.png"));
+            imgFish1_R = ImageIO.read(new File("./res/img/guppy_1R.png"));
+            imgFish2_R = ImageIO.read(new File("./res/img/guppy_2R.png"));
+            imgFish3_R = ImageIO.read(new File("./res/img/guppy_3R.png"));
+            imgFish4_R = ImageIO.read(new File("./res/img/piranha_R.png"));
 
             backgroundImageInit(bgImg);
         } catch (IOException e) {
